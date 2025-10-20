@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>QO Admin Header Button</name>
+  <code>qo_admin_header_button</code>
+  <version>1.0.0</version>
+  <author>QO3 Automation</author>
+  <link>https://qo3.local</link>
+
+  <file path="admin/view/template/common/header.twig">
+    <operation>
+      <search><![CDATA[<ul class="nav navbar-nav navbar-right">]]></search>
+      <add position="after"><![CDATA[
+      <li class="dropdown qo-dropdown">
+        <a id="qoDropdown" class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">QO <i class="fa fa-caret-down"></i></a>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="qoDropdown">
+          <li class="dropdown-header">QO</li>
+          <li><a href="#">Пункт 1</a></li>
+          <li><a href="#">Пункт 2</a></li>
+        </ul>
+      </li>
+]]></add>
+    </operation>
+  </file>
+
+  <file path="admin/view/stylesheet/stylesheet.css">
+    <operation>
+      <search regex="true"><![CDATA[~$~]]></search>
+      <add position="before"><![CDATA[
+/* QO admin dropdown */
+.qo-dropdown > a {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.qo-dropdown .dropdown-header {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6c757d;
+}
+
+.qo-dropdown .dropdown-menu {
+  min-width: 12rem;
+}
+
+.qo-dropdown .dropdown-menu > li > a {
+  padding: 8px 20px;
+}
+
+]]></add>
+    </operation>
+  </file>
+</modification>
