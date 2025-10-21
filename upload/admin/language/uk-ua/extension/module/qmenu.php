@@ -10,6 +10,7 @@ $_['text_disabled'] = 'Вимкнено';
 $_['entry_status'] = 'Статус';
 $_['entry_button_label'] = 'Підпис кнопки';
 $_['entry_items'] = 'Пункти меню';
+$_['entry_primary_language'] = 'Основна мова';
 
 $_['column_label'] = 'Назва';
 $_['column_type'] = 'Тип';
@@ -27,6 +28,7 @@ $_['text_manage_qmenu'] = 'Налаштувати Qmenu';
 $_['help_link'] = 'Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product).';
 $_['help_route'] = 'Маршрут адмінки без токена (наприклад, catalog/product).';
 $_['help_new_tab'] = 'Якщо позначено, посилання відкриється у новій вкладці.';
+$_['help_primary_language'] = 'Значення основної мови використовуються, якщо інші переклади не заповнені.';
 
 $_['button_add_item'] = 'Додати пункт';
 $_['button_remove'] = 'Видалити';

@@ -18,6 +18,22 @@ class ControllerExtensionModuleQmenu extends Controller {
         }
 
         $default_language_id = (int) $this->config->get('config_language_id');
+        $stored_primary_language_id = (int) $this->config->get('module_qmenu_primary_language_id');
+
+        if (!in_array($stored_primary_language_id, $language_ids, true)) {
+            $stored_primary_language_id = $default_language_id;
+        }
+
+        if (isset($this->request->post['module_qmenu_primary_language_id'])) {
+            $primary_language_id = (int) $this->request->post['module_qmenu_primary_language_id'];
+
+            if (!in_array($primary_language_id, $language_ids, true)) {
+                $primary_language_id = $default_language_id;
+            }
+        } else {
+            $primary_language_id = $stored_primary_language_id;
+        }
+
         $fallback_label = $this->language->get('text_default_label');
 
         if ($fallback_label === 'text_default_label' || $fallback_label === '') {
@@ -28,13 +44,14 @@ class ControllerExtensionModuleQmenu extends Controller {
             $status = !empty($this->request->post['module_qmenu_status']) ? 1 : 0;
 
             $label_input = $this->request->post['module_qmenu_label'] ?? [];
-            $labels = $this->prepareLabelSet($label_input, $language_ids, $default_language_id, $fallback_label);
+            $labels = $this->prepareLabelSet($label_input, $language_ids, $default_language_id, $primary_language_id, $fallback_label);
 
             $items_input = $this->request->post['module_qmenu_items'] ?? [];
-            $items = $this->sanitizeItems($items_input, $language_ids, $default_language_id, $fallback_label);
+            $items = $this->sanitizeItems($items_input, $language_ids, $default_language_id, $primary_language_id, $fallback_label);
 
             $settings = [
                 'module_qmenu_status' => $status,
+                'module_qmenu_primary_language_id' => $primary_language_id,
                 'module_qmenu_label' => json_encode($labels, JSON_UNESCAPED_UNICODE),
                 'module_qmenu_items' => json_encode($items, JSON_UNESCAPED_UNICODE)
             ];
@@ -67,6 +84,7 @@ class ControllerExtensionModuleQmenu extends Controller {
         $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
         $data['user_token'] = $this->session->data['user_token'];
         $data['default_language_id'] = $default_language_id;
+        $data['module_qmenu_primary_language_id'] = $primary_language_id;
 
         if (isset($this->request->post['module_qmenu_status'])) {
             $data['module_qmenu_status'] = !empty($this->request->post['module_qmenu_status']) ? 1 : 0;
@@ -79,6 +97,7 @@ class ControllerExtensionModuleQmenu extends Controller {
                 $this->request->post['module_qmenu_label'],
                 $language_ids,
                 $default_language_id,
+                $primary_language_id,
                 $fallback_label
             );
         } else {
@@ -91,16 +110,16 @@ class ControllerExtensionModuleQmenu extends Controller {
                 $source = [$default_language_id => trim((string) $decoded_label)];
             }
 
-            $data['module_qmenu_label'] = $this->prepareLabelSet($source, $language_ids, $default_language_id, $fallback_label);
+            $data['module_qmenu_label'] = $this->prepareLabelSet($source, $language_ids, $default_language_id, $primary_language_id, $fallback_label);
         }
 
         if (isset($this->request->post['module_qmenu_items'])) {
-            $data['items'] = $this->sanitizeItems($this->request->post['module_qmenu_items'], $language_ids, $default_language_id, $fallback_label);
+            $data['items'] = $this->sanitizeItems($this->request->post['module_qmenu_items'], $language_ids, $default_language_id, $primary_language_id, $fallback_label);
         } else {
             $stored_items = $this->config->get('module_qmenu_items');
             $decoded_items = $this->decodeSettingValue($stored_items);
 
-            $data['items'] = $this->sanitizeItems(is_array($decoded_items) ? $decoded_items : [], $language_ids, $default_language_id, $fallback_label);
+            $data['items'] = $this->sanitizeItems(is_array($decoded_items) ? $decoded_items : [], $language_ids, $default_language_id, $primary_language_id, $fallback_label);
         }
 
         $data['header'] = $this->load->controller('common/header');
@@ -118,9 +137,13 @@ class ControllerExtensionModuleQmenu extends Controller {
         return !$this->error;
     }
 
-    private function prepareLabelSet($labels, array $language_ids, int $default_language_id, string $fallback): array {
+    private function prepareLabelSet($labels, array $language_ids, int $default_language_id, int $primary_language_id, string $fallback): array {
         if (!is_array($labels)) {
             $labels = [];
+        }
+
+        if (!in_array($primary_language_id, $language_ids, true)) {
+            $primary_language_id = $default_language_id;
         }
 
         $prepared = [];
@@ -129,7 +152,7 @@ class ControllerExtensionModuleQmenu extends Controller {
             $prepared[$language_id] = isset($labels[$language_id]) ? trim((string) $labels[$language_id]) : '';
         }
 
-        $primary = $prepared[$default_language_id] ?? '';
+        $primary = $prepared[$primary_language_id] ?? '';
 
         if ($primary === '') {
             foreach ($prepared as $value) {
@@ -144,16 +167,24 @@ class ControllerExtensionModuleQmenu extends Controller {
             $primary = $fallback;
         }
 
-        $prepared[$default_language_id] = $primary;
+        $prepared[$primary_language_id] = $primary;
+
+        if ($prepared[$default_language_id] === '') {
+            $prepared[$default_language_id] = $primary;
+        }
 
         return $prepared;
     }
 
-    private function sanitizeItems($items, array $language_ids, int $default_language_id, string $fallback_label): array {
+    private function sanitizeItems($items, array $language_ids, int $default_language_id, int $primary_language_id, string $fallback_label): array {
         $result = [];
 
         if (!is_array($items)) {
             return $result;
+        }
+
+        if (!in_array($primary_language_id, $language_ids, true)) {
+            $primary_language_id = $default_language_id;
         }
 
         foreach ($items as $item) {
@@ -205,7 +236,11 @@ class ControllerExtensionModuleQmenu extends Controller {
                 $primary = $fallback_label;
             }
 
-            $labels[$default_language_id] = $primary;
+            $labels[$primary_language_id] = $primary;
+
+            if ($labels[$default_language_id] === '') {
+                $labels[$default_language_id] = $primary;
+            }
 
             $result[] = [
                 'label' => $labels,

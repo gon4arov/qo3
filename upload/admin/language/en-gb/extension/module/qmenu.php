@@ -10,6 +10,7 @@ $_['text_disabled'] = 'Disabled';
 $_['entry_status'] = 'Status';
 $_['entry_button_label'] = 'Button label';
 $_['entry_items'] = 'Menu items';
+$_['entry_primary_language'] = 'Primary language';
 
 $_['column_label'] = 'Label';
 $_['column_type'] = 'Type';
@@ -27,6 +28,7 @@ $_['text_manage_qmenu'] = 'Configure Qmenu';
 $_['help_link'] = 'Absolute or relative URL (e.g. https://example.com or index.php?route=catalog/product).';
 $_['help_route'] = 'Admin route without token (e.g. catalog/product).';
 $_['help_new_tab'] = 'Check to open the link in a new browser tab.';
+$_['help_primary_language'] = 'Values from the primary language are used when other translations are left blank.';
 
 $_['button_add_item'] = 'Add item';
 $_['button_remove'] = 'Remove';
