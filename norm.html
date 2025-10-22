@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Модифікатори</title>
+    <base href="https://oc3.best-things.com.ua/admin/" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <script
+      type="text/javascript"
+      src="view/javascript/jquery/jquery-2.1.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="view/javascript/bootstrap/js/bootstrap.min.js"
+    ></script>
+    <link
+      href="view/stylesheet/bootstrap.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="view/javascript/font-awesome/css/font-awesome.min.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <script
+      src="view/javascript/jquery/datetimepicker/moment/moment.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js"
+      type="text/javascript"
+    ></script>
+    <link
+      href="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      type="text/css"
+      href="view/stylesheet/stylesheet.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <script src="view/javascript/common.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="container">
+      <header id="header" class="navbar navbar-static-top">
+        <div class="container-fluid">
+          <div id="header-logo" class="navbar-header">
+            <a
+              href="https://oc3.best-things.com.ua/admin/index.php?route=common/dashboard&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+              class="navbar-brand"
+              ><img src="view/image/logo.png" alt="Qmenu" title="Qmenu"
+            /></a>
+          </div>
+          <a href="#" id="button-menu" class="hidden-md hidden-lg"
+            ><span class="fa fa-bars"></span
+          ></a>
+          <ul class="nav pull-left">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" title="Додати"
+                ><i class="fa fa-plus fa-lg"></i>
+                <span class="header-item">Додати</span></a
+              >
+              <ul class="dropdown-menu dropdown-menu-left alerts-dropdown">
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/product/add&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="display: block; overflow: auto"
+                    >Товар</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/category/add&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="display: block; overflow: auto"
+                    >Категорію</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/manufacturer/add&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="display: block; overflow: auto"
+                    >Виробника</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=user/user/add&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="display: block; overflow: auto"
+                    >Покупця</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/download/add&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="display: block; overflow: auto"
+                    >Завантаження</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <div id="oc-search-div" class="col-sm-3 col-md-3 pull-left">
+            <form id="oc-search" class="navbar-form" role="search">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <a
+                    class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown"
+                    href="#"
+                  >
+                    <i class="fa fa-search"></i>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-left alerts-dropdown">
+                    <li class="dropdown-header">Опції пошуку</li>
+                    <li>
+                      <a
+                        onclick="setOption('catalog', 'Назва, модель, артикул'); return false;"
+                        ><i class="fa fa-book"></i><span>Каталог</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        onclick="setOption('customers', 'Прізвище, ім’я, E-Mail'); return false;"
+                        ><i class="fa fa-group"></i><span>Покупці</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        onclick="setOption('orders', 'Номер замовлення, номер рахунку, прізвище, ім’я, E-mail'); return false;"
+                        ><i class="fa fa-credit-card"></i
+                        ><span>Замовлення</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <input
+                  id="oc-search-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="Пошук"
+                  name="query"
+                  autocomplete="off"
+                />
+                <input
+                  id="oc-search-option"
+                  type="hidden"
+                  name="search-option"
+                  value="catalog"
+                />
+                <div id="loader-search">
+                  <img src="view/image/loader-search.gif" alt="" />
+                </div>
+              </div>
+            </form>
+            <div id="oc-search-result"></div>
+            <script type="text/javascript">
+              function setOption(option, text) {
+                jQuery("#oc-search-option").val(option);
+                jQuery("#oc-search-input").attr("placeholder", text);
+              }
+
+              jQuery("#oc-search-input").keyup(function () {
+                var option = jQuery("#oc-search-option").val();
+                var length = 3;
+
+                if (option == "orders") {
+                  length = 1;
+                }
+
+                if (this.value.length < length) {
+                  return false;
+                }
+
+                if (jQuery.support.leadingWhitespace == false) {
+                  return false;
+                }
+
+                jQuery("#loader-search").css("display", "block");
+
+                jQuery.ajax({
+                  type: "get",
+                  url:
+                    "index.php?route=search/search/search" +
+                    "&user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA",
+                  data: jQuery("#oc-search").serialize(),
+                  dataType: "json",
+                  success: function (json) {
+                    jQuery("#oc-search-result").css("display", "block");
+                    jQuery("#loader-search").css("display", "none");
+
+                    if (json["error"]) {
+                      jQuery("#oc-search-result").html(json["error"]);
+                      return;
+                    }
+
+                    jQuery("#oc-search-result").html(json["result"]);
+                  },
+                });
+              });
+
+              jQuery(document).mouseup(function (e) {
+                var container = jQuery("#oc-search-result");
+
+                if (
+                  !container.is(e.target) &&
+                  container.has(e.target).length === 0
+                ) {
+                  container.hide();
+                }
+              });
+
+              jQuery("#oc-search").submit(function (e) {
+                e.preventDefault();
+              });
+            </script>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown qmenu-dropdown">
+              <a
+                id="qmenuDropdown"
+                class="dropdown-toggle"
+                href="#"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Qmenu <i class="fa fa-caret-down"></i
+              ></a>
+              <ul
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="qmenuDropdown"
+              >
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=setting/store&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="color: #000000"
+                    >setting/store</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/refresh&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="color: #000000"
+                    >marketplace/modification/refresh</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/clearlog&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="color: #000000"
+                    >marketplace/modification/clearlog</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=tool/log&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="color: #000000"
+                    >tool/log</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=blog/category&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    style="color: #000000"
+                    >blog/category</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=extension/module/qmenu&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    >Налаштувати Qmenu</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                ><img
+                  src="https://oc3.best-things.com.ua/image/cache/profile-45x45.png"
+                  alt="John Doe"
+                  title="0dmin"
+                  id="user-profile"
+                  class="img-circle" />John Doe
+                <i class="fa fa-caret-down fa-fw"></i
+              ></a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=common/profile&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    ><i class="fa fa-user-circle-o fa-fw"></i> Ваш профіль</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Магазини</li>
+                <li>
+                  <a href="https://oc3.best-things.com.ua/" target="_blank"
+                    >Ваш магазин</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Допомога</li>
+                <li>
+                  <a
+                    href="https://ocstore.com/?utm_source=ocstore3"
+                    target="_blank"
+                    ><i class="fa fa-opencart fa-fw"></i> Сайт проекту</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://docs.ocstore.com/?utm_source=ocstore3"
+                    target="_blank"
+                    ><i class="fa fa-file-text-o fa-fw"></i> Документація</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://opencartforum.com/?utm_source=ocstore3"
+                    target="_blank"
+                    ><i class="fa fa-comments-o fa-fw"></i> Форум підтримки</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="https://oc3.best-things.com.ua/admin/index.php?route=common/logout&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                ><i class="fa fa-sign-out"></i>
+                <span class="hidden-xs hidden-sm hidden-md">Вихід</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </header>
+      <nav id="column-left">
+        <div id="navigation"><span class="fa fa-bars"></span> Навігація</div>
+        <ul id="menu">
+          <li id="menu-dashboard">
+            <a
+              href="https://oc3.best-things.com.ua/admin/index.php?route=common/dashboard&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+              ><i class="fa fa-dashboard fw"></i> Панель стану</a
+            >
+          </li>
+          <li id="menu-catalog">
+            <a href="#collapse1" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-tags fw"></i> Каталог</a
+            >
+            <ul id="collapse1" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/category&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Категорії</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/product&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Товари</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/recurring&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Періодичні платежі</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/filter&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Фільтри</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse1-4"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Характеристики</a
+                >
+
+                <ul id="collapse1-4" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/attribute&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Характеристики</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/attribute_group&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Групи характеристик</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/option&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Опції</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/manufacturer&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Виробники</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/download&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Файли для завантаження</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/review&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Відгуки</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/information&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Статті</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-blog">
+            <a href="#collapse2" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-book fw"></i> Блог</a
+            >
+            <ul id="collapse2" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/article&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Статті блогу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/category&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Категорії блогу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/review&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Відгуки блогу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/setting&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Налаштування блогу</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-extension">
+            <a href="#collapse3" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-puzzle-piece fw"></i> Доповнення</a
+            >
+            <ul id="collapse3" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/opencartforum&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Магазин OpenCartForum</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/marketplace&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Магазин OpenCart.com</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/installer&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Установка доповнень</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/extension&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;type=module"
+                  >Доповнення</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Модифікатори</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/event&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Події</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-design">
+            <a href="#collapse4" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-television fw"></i> Дизайн</a
+            >
+            <ul id="collapse4" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/layout&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Макети</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/theme&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Редактор шаблонів</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/translation&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Редактор перекладу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/banner&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Банери</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/seo_url&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >SEO URL</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-sale">
+            <a href="#collapse5" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-shopping-cart fw"></i> Продажі</a
+            >
+            <ul id="collapse5" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=sale/order&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Замовлення</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=sale/recurring&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Періодичні замовлення</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=sale/return&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Повернення товару</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse5-3"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Подарункові сертифікати</a
+                >
+
+                <ul id="collapse5-3" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=sale/voucher&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Подарункові сертифікати</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=sale/voucher_theme&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Тематика</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li id="menu-customer">
+            <a href="#collapse6" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-user fw"></i> Покупці</a
+            >
+            <ul id="collapse6" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/customer&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Покупці</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/customer_group&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Групи покупців</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/customer_approval&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Активація покупців</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/custom_field&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Настроювані поля</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-marketing">
+            <a href="#collapse7" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-share-alt fw"></i> Маркетинг</a
+            >
+            <ul id="collapse7" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketing/marketing&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Маркетинг</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketing/coupon&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Купони</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketing/contact&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Пошта</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse7-3"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Google Shopping</a
+                >
+
+                <ul id="collapse7-3" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=extension/advertise/google&amp;store_id=0&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Ваш магазин</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li id="menu-system">
+            <a href="#collapse8" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-cog fw"></i> Система</a
+            >
+            <ul id="collapse8" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=setting/store&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Налаштування</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse8-1"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Користувачі</a
+                >
+
+                <ul id="collapse8-1" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=user/user&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Користувачі</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=user/user_permission&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Групи користувачів</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=user/api&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >API</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="#collapse8-2"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Локалізація</a
+                >
+
+                <ul id="collapse8-2" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/location&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Місцезнаходження</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/language&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Мови</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/currency&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Валюта</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/stock_status&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Стан на складі</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/order_status&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Статус замовлень</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#collapse-8-2-5"
+                      data-toggle="collapse"
+                      class="parent collapsed"
+                      >Повернення товару</a
+                    >
+                    <ul id="collapse-8-2-5" class="collapse">
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/return_status&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                          >Статуси повернення</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/return_action&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                          >Операції повернення</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/return_reason&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                          >Причини повернення</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/country&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Країни</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/zone&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Регіони</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/geo_zone&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Географічні зони</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#collapse-8-2-9"
+                      data-toggle="collapse"
+                      class="parent collapsed"
+                      >Податки</a
+                    >
+                    <ul id="collapse-8-2-9" class="collapse">
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/tax_class&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                          >Податкові класи</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/tax_rate&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                          >Податкові ставки</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/length_class&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Одиниці виміру</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/weight_class&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Одиниці ваги</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="#collapse8-3"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Обслуговування</a
+                >
+
+                <ul id="collapse8-3" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=tool/backup&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Бекап / Відновлення</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=tool/upload&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Завантаження</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=tool/log&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      >Журнал помилок</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li id="menu-report">
+            <a href="#collapse9" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-bar-chart fw"></i> Звіти</a
+            >
+            <ul id="collapse9" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=report/report&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Звіти</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=report/online&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Покупці онлайн</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=report/statistics&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Статистика</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div id="stats">
+          <ul>
+            <li>
+              <div>Завершених замовлень <span class="pull-right">0%</span></div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-success"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 0%"
+                >
+                  <span class="sr-only">0%</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div>Замовлень в процесі <span class="pull-right">0%</span></div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-warning"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 0%"
+                >
+                  <span class="sr-only">0%</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div>Інші замовлення <span class="pull-right">0%</span></div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-danger"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 0%"
+                >
+                  <span class="sr-only">0%</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <div class="pull-right">
+              <a
+                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/refresh&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                data-toggle="tooltip"
+                title="Оновити"
+                class="btn btn-info"
+                ><i class="fa fa-refresh"></i
+              ></a>
+              <a
+                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/clear&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                data-toggle="tooltip"
+                title="Очистити"
+                class="btn btn-warning"
+                ><i class="fa fa-eraser"></i
+              ></a>
+              <button
+                type="button"
+                data-toggle="tooltip"
+                title="Видалити"
+                class="btn btn-danger"
+                onclick="confirm('Ви впевнені?') ? $('#form-modification').submit() : false;"
+              >
+                <i class="fa fa-trash-o"></i>
+              </button>
+            </div>
+            <h1>Модифікатори</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=common/dashboard&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Головна</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                  >Модифікатори</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> Кожен раз коли ви включаєте,
+            відключаєте або видаляєте модифікатор, необхідно натиснути кнопку
+            оновлення, для оновлення кешу модифікацій
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <i class="fa fa-list"></i> Список модифікаторів
+              </h3>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Оновлення XML</label>
+                <div class="col-sm-10">
+                  <div class="progress">
+                    <div
+                      id="progress-bar"
+                      class="progress-bar"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                  <div id="progress-text"></div>
+                </div>
+              </div>
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#tab-general" data-toggle="tab">Загальні</a>
+                </li>
+                <li><a href="#tab-log" data-toggle="tab">Лог</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab-general">
+                  <form
+                    action="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/delete&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                    method="post"
+                    enctype="multipart/form-data"
+                    id="form-modification"
+                  >
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <td style="width: 1px" class="text-center">
+                              <input
+                                type="checkbox"
+                                onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"
+                              />
+                            </td>
+                            <td class="text-left">
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;sort=name&amp;order=DESC"
+                                class="asc"
+                                >Назва модифікатора</a
+                              >
+                            </td>
+                            <td class="text-left">
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;sort=author&amp;order=DESC"
+                                >Автор</a
+                              >
+                            </td>
+                            <td class="text-left">
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;sort=version&amp;order=DESC"
+                                >Версія</a
+                              >
+                            </td>
+                            <td class="text-left">
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;sort=status&amp;order=DESC"
+                                >Статус</a
+                              >
+                            </td>
+                            <td class="text-left">
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;sort=date_added&amp;order=DESC"
+                                >Дата додавання</a
+                              >
+                            </td>
+                            <td class="text-right">Дія</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">
+                              <input
+                                type="checkbox"
+                                name="selected[]"
+                                value="1"
+                              />
+                            </td>
+                            <td class="text-left">
+                              Localcopy OCMOD Install Fix
+                            </td>
+                            <td class="text-left">setbenson@gmail.com</td>
+                            <td class="text-left">1.0</td>
+                            <td class="text-left">Включено</td>
+                            <td class="text-left">21.10.2025</td>
+                            <td class="text-right">
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/edit&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;modification_id=1"
+                                data-toggle="tooltip"
+                                title="Редагувати"
+                                class="btn btn-success"
+                                ><i class="fa fa-pencil"></i
+                              ></a>
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/download&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;modification_id=1"
+                                data-toggle="tooltip"
+                                title="Завантажити xml файл"
+                                class="btn btn-primary"
+                                download="localcopy-3.ocmod.xml"
+                                ><i class="fa fa-download"></i
+                              ></a>
+                              <button
+                                type="button"
+                                data-loading-text="Завантаження..."
+                                data-modification-id="1"
+                                data-toggle="tooltip"
+                                title="Завантажити"
+                                class="btn btn-primary button-upload"
+                              >
+                                <i class="fa fa-upload"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-info"
+                                disabled="disabled"
+                              >
+                                <i class="fa fa-link"></i>
+                              </button>
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/disable&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;modification_id=1"
+                                data-toggle="tooltip"
+                                title="Відключити"
+                                class="btn btn-danger"
+                                ><i class="fa fa-minus-circle"></i
+                              ></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">
+                              <input
+                                type="checkbox"
+                                name="selected[]"
+                                value="3"
+                              />
+                            </td>
+                            <td class="text-left">qmenu Admin Header Menu</td>
+                            <td class="text-left">QO3 Automation</td>
+                            <td class="text-left">1.0.0</td>
+                            <td class="text-left">Включено</td>
+                            <td class="text-left">22.10.2025</td>
+                            <td class="text-right">
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/edit&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;modification_id=3"
+                                data-toggle="tooltip"
+                                title="Редагувати"
+                                class="btn btn-success"
+                                ><i class="fa fa-pencil"></i
+                              ></a>
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/download&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;modification_id=3"
+                                data-toggle="tooltip"
+                                title="Завантажити xml файл"
+                                class="btn btn-primary"
+                                download="qmenu_admin_header.ocmod.xml"
+                                ><i class="fa fa-download"></i
+                              ></a>
+                              <button
+                                type="button"
+                                data-loading-text="Завантаження..."
+                                data-modification-id="3"
+                                data-toggle="tooltip"
+                                title="Завантажити"
+                                class="btn btn-primary button-upload"
+                              >
+                                <i class="fa fa-upload"></i>
+                              </button>
+                              <a
+                                href="https://qo3.local"
+                                data-toggle="tooltip"
+                                title="Посилання"
+                                class="btn btn-info"
+                                target="_blank"
+                                ><i class="fa fa-link"></i
+                              ></a>
+                              <a
+                                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/disable&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&amp;modification_id=3"
+                                data-toggle="tooltip"
+                                title="Відключити"
+                                class="btn btn-danger"
+                                ><i class="fa fa-minus-circle"></i
+                              ></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </form>
+                  <div class="row">
+                    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">
+                      Показано з 1 по 2 із 2 (всього сторінок 1)
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-log">
+                  <p>
+                    <textarea wrap="off" rows="15" class="form-control">
+2025-10-22 22:12:33 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 69
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 77
+LINE: 151
+LINE: 168
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 59
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 68
+LINE: 74
+
+FILE: system/library/template/template.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/twig.php
+CODE: if (is_file($file)) {
+LINE: 13
+----------------------------------------------------------------
+MOD: Localcopy OCMOD Install Fix
+
+FILE: admin/controller/marketplace/install.php
+CODE: if ($safe) {
+LINE: 165
+CODE: if (is_dir($file) &amp;&amp; !is_dir($path)) {
+LINE: 221
+----------------------------------------------------------------
+MOD: qmenu Admin Header Menu
+
+FILE: admin/view/template/common/header.twig
+CODE: &lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+LINE: 54
+
+FILE: admin/controller/common/header.php
+CODE: $data['stores'] = array();
+LINE: 294
+
+FILE: admin/view/stylesheet/stylesheet.css
+REGEX: ~$~
+LINE: 1153
+
+FILE: admin/view/template/extension/module/qmenu.twig
+CODE: {{ header }}{{ column_left }}
+LINE: 0
+CODE: &lt;thead&gt;
+                  &lt;tr&gt;
+                    &lt;td class=&quot;text-left&quot;&gt;{{ column_label }}&lt;/td&gt;
+                    &lt;td class=&quot;text-center&quot;&gt;{{ column_color }}&lt;/td&gt;
+                    &lt;td class=&quot;text-left&quot;&gt;{{ column_type }}&lt;/td&gt;
+                    &lt;td class=&quot;text-left&quot;&gt;{{ column_destination }}&lt;/td&gt;
+                    &lt;td class=&quot;text-center&quot;&gt;{{ column_enabled }}&lt;/td&gt;
+                    &lt;td class=&quot;text-center&quot;&gt;{{ column_new_tab }}&lt;/td&gt;
+                    &lt;td class=&quot;text-right&quot;&gt;{{ column_action }}&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/thead&gt;
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+</textarea
+                    >
+                  </p>
+                  <div class="text-center">
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/clearlog&amp;user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA"
+                      class="btn btn-danger"
+                      ><i class="fa fa-eraser"></i> Очистити</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        <!--
+        var step = new Array();
+        var total = 0;
+
+        $(".button-upload").on("click", function () {
+          $("#form-upload").remove();
+          var modification_id = $(this).attr("data-modification-id");
+
+          $("body").prepend(
+            '<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>'
+          );
+
+          $("#form-upload input[name='file']").trigger("click");
+
+          if (typeof timer != "undefined") {
+            clearInterval(timer);
+          }
+
+          timer = setInterval(function () {
+            if ($("#form-upload input[name='file']").val() != "") {
+              clearInterval(timer);
+
+              // Reset everything
+              $(".alert").remove();
+              $("#progress-bar").css("width", "0%");
+              $("#progress-bar").removeClass(
+                "progress-bar-danger progress-bar-success"
+              );
+              $("#progress-text").html("");
+
+              $.ajax({
+                url:
+                  "index.php?route=marketplace/modification/upload&user_token=xKuSt7pVsguORPcg1FOad9s21xGMd0SA&modification_id=" +
+                  modification_id,
+                type: "post",
+                dataType: "json",
+                data: new FormData($("#form-upload")[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                  $("#button-upload").button("loading");
+                },
+                complete: function () {
+                  $("#button-upload").button("reset");
+                },
+                success: function (json) {
+                  if (json["error"]) {
+                    $("#progress-bar").addClass("progress-bar-danger");
+                    $("#progress-text").html(
+                      '<div class="text-danger">' + json["error"] + "</div>"
+                    );
+                  }
+
+                  if (json["step"]) {
+                    step = json["step"];
+                    total = step.length;
+
+                    if (json["overwrite"].length) {
+                      html = "";
+
+                      for (i = 0; i < json["overwrite"].length; i++) {
+                        html += json["overwrite"][i] + "\n";
+                      }
+
+                      $("#overwrite").html(html);
+
+                      $("#button-continue").prop("disabled", false);
+                    } else {
+                      next();
+                    }
+                  }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                  alert(
+                    thrownError +
+                      "\r\n" +
+                      xhr.statusText +
+                      "\r\n" +
+                      xhr.responseText
+                  );
+                },
+              });
+            }
+          }, 500);
+        });
+
+        function next() {
+          data = step.shift();
+
+          if (data) {
+            $("#progress-bar").css(
+              "width",
+              100 - (step.length / total) * 100 + "%"
+            );
+            $("#progress-text").html(
+              '<span class="text-info">' + data["text"] + "</span>"
+            );
+
+            $.ajax({
+              url: data.url,
+              type: "post",
+              dataType: "json",
+              data: "path=" + data.path,
+              success: function (json) {
+                if (json["error"]) {
+                  $("#progress-bar").addClass("progress-bar-danger");
+                  $("#progress-text").html(
+                    '<div class="text-danger">' + json["error"] + "</div>"
+                  );
+                  $("#button-clear").prop("disabled", false);
+                }
+
+                if (json["success"]) {
+                  $("#progress-bar").addClass("progress-bar-success");
+                  $("#progress-text").html(
+                    '<span class="text-success">' + json["success"] + "</span>"
+                  );
+                }
+
+                if (!json["error"] && !json["success"]) {
+                  next();
+                }
+              },
+              error: function (xhr, ajaxOptions, thrownError) {
+                alert(
+                  thrownError +
+                    "\r\n" +
+                    xhr.statusText +
+                    "\r\n" +
+                    xhr.responseText
+                );
+              },
+            });
+          }
+        }
+        //-->
+      </script>
+      <footer id="footer">
+        <a
+          target="_blank"
+          href="https://ocstore.com/?utm_source=ocstore3_install"
+          >ocStore</a
+        >
+        &copy; 2009-2025 Всі права захищені.<br />Версія ocStore 3.0.3.7
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+.ui-autocomplete {
+  position: absolute;
+  z-index: 1050;
+  max-height: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 4px 0;
+}
+
+.ui-autocomplete .ui-menu-item-wrapper {
+  padding: 6px 12px;
+  color: #333;
+}
+
+.ui-autocomplete .ui-state-active {
+  margin: 0;
+  border: none;
+  background-color: #e8f0fe;
+  color: #0b5394;
+}

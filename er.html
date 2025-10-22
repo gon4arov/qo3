@@ -1,0 +1,3097 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Qmenu</title>
+    <base href="https://oc3.best-things.com.ua/admin/" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <script
+      type="text/javascript"
+      src="view/javascript/jquery/jquery-2.1.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="view/javascript/bootstrap/js/bootstrap.min.js"
+    ></script>
+    <link
+      href="view/stylesheet/bootstrap.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link
+      href="view/javascript/font-awesome/css/font-awesome.min.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <script
+      src="view/javascript/jquery/datetimepicker/moment/moment.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js"
+      type="text/javascript"
+    ></script>
+    <link
+      href="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      type="text/css"
+      href="view/stylesheet/stylesheet.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <script src="view/javascript/common.js" type="text/javascript"></script>
+    <script
+      type="text/javascript"
+      src="view/javascript/jquery/ui/jquery-ui.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="container">
+      <header id="header" class="navbar navbar-static-top">
+        <div class="container-fluid">
+          <div id="header-logo" class="navbar-header">
+            <a
+              href="https://oc3.best-things.com.ua/admin/index.php?route=common/dashboard&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+              class="navbar-brand"
+              ><img src="view/image/logo.png" alt="Qmenu" title="Qmenu"
+            /></a>
+          </div>
+          <a href="#" id="button-menu" class="hidden-md hidden-lg"
+            ><span class="fa fa-bars"></span
+          ></a>
+          <ul class="nav pull-left">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" title="Додати"
+                ><i class="fa fa-plus fa-lg"></i>
+                <span class="header-item">Додати</span></a
+              >
+              <ul class="dropdown-menu dropdown-menu-left alerts-dropdown">
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/product/add&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="display: block; overflow: auto"
+                    >Товар</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/category/add&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="display: block; overflow: auto"
+                    >Категорію</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/manufacturer/add&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="display: block; overflow: auto"
+                    >Виробника</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=user/user/add&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="display: block; overflow: auto"
+                    >Покупця</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/download/add&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="display: block; overflow: auto"
+                    >Завантаження</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <div id="oc-search-div" class="col-sm-3 col-md-3 pull-left">
+            <form id="oc-search" class="navbar-form" role="search">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <a
+                    class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown"
+                    href="#"
+                  >
+                    <i class="fa fa-search"></i>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-left alerts-dropdown">
+                    <li class="dropdown-header">Опції пошуку</li>
+                    <li>
+                      <a
+                        onclick="setOption('catalog', 'Назва, модель, артикул'); return false;"
+                        ><i class="fa fa-book"></i><span>Каталог</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        onclick="setOption('customers', 'Прізвище, ім’я, E-Mail'); return false;"
+                        ><i class="fa fa-group"></i><span>Покупці</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        onclick="setOption('orders', 'Номер замовлення, номер рахунку, прізвище, ім’я, E-mail'); return false;"
+                        ><i class="fa fa-credit-card"></i
+                        ><span>Замовлення</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <input
+                  id="oc-search-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="Пошук"
+                  name="query"
+                  autocomplete="off"
+                />
+                <input
+                  id="oc-search-option"
+                  type="hidden"
+                  name="search-option"
+                  value="catalog"
+                />
+                <div id="loader-search">
+                  <img src="view/image/loader-search.gif" alt="" />
+                </div>
+              </div>
+            </form>
+            <div id="oc-search-result"></div>
+            <script type="text/javascript">
+              function setOption(option, text) {
+                jQuery("#oc-search-option").val(option);
+                jQuery("#oc-search-input").attr("placeholder", text);
+              }
+
+              jQuery("#oc-search-input").keyup(function () {
+                var option = jQuery("#oc-search-option").val();
+                var length = 3;
+
+                if (option == "orders") {
+                  length = 1;
+                }
+
+                if (this.value.length < length) {
+                  return false;
+                }
+
+                if (jQuery.support.leadingWhitespace == false) {
+                  return false;
+                }
+
+                jQuery("#loader-search").css("display", "block");
+
+                jQuery.ajax({
+                  type: "get",
+                  url:
+                    "index.php?route=search/search/search" +
+                    "&user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi",
+                  data: jQuery("#oc-search").serialize(),
+                  dataType: "json",
+                  success: function (json) {
+                    jQuery("#oc-search-result").css("display", "block");
+                    jQuery("#loader-search").css("display", "none");
+
+                    if (json["error"]) {
+                      jQuery("#oc-search-result").html(json["error"]);
+                      return;
+                    }
+
+                    jQuery("#oc-search-result").html(json["result"]);
+                  },
+                });
+              });
+
+              jQuery(document).mouseup(function (e) {
+                var container = jQuery("#oc-search-result");
+
+                if (
+                  !container.is(e.target) &&
+                  container.has(e.target).length === 0
+                ) {
+                  container.hide();
+                }
+              });
+
+              jQuery("#oc-search").submit(function (e) {
+                e.preventDefault();
+              });
+            </script>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown qmenu-dropdown">
+              <a
+                id="qmenuDropdown"
+                class="dropdown-toggle"
+                href="#"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Qmenu <i class="fa fa-caret-down"></i
+              ></a>
+              <ul
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="qmenuDropdown"
+              >
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=setting/store&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="color: #000000"
+                    >setting/store</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification/refresh&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="color: #000000"
+                    >marketplace/modification/refresh</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=tool/log&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="color: #000000"
+                    >tool/log</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=blog/category&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="color: #000000"
+                    >blog/category</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/category&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    style="color: #000000"
+                    >catalog/category</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/category/edit&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi&amp;category_id=47"
+                    style="color: #000000"
+                    >Інформація про доставку</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=extension/module/qmenu&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    >Налаштувати Qmenu</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                ><img
+                  src="https://oc3.best-things.com.ua/image/cache/profile-45x45.png"
+                  alt="John Doe"
+                  title="0dmin"
+                  id="user-profile"
+                  class="img-circle" />John Doe
+                <i class="fa fa-caret-down fa-fw"></i
+              ></a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <a
+                    href="https://oc3.best-things.com.ua/admin/index.php?route=common/profile&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                    ><i class="fa fa-user-circle-o fa-fw"></i> Ваш профіль</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Магазини</li>
+                <li>
+                  <a href="https://oc3.best-things.com.ua/" target="_blank"
+                    >Ваш магазин</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Допомога</li>
+                <li>
+                  <a
+                    href="https://ocstore.com/?utm_source=ocstore3"
+                    target="_blank"
+                    ><i class="fa fa-opencart fa-fw"></i> Сайт проекту</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://docs.ocstore.com/?utm_source=ocstore3"
+                    target="_blank"
+                    ><i class="fa fa-file-text-o fa-fw"></i> Документація</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://opencartforum.com/?utm_source=ocstore3"
+                    target="_blank"
+                    ><i class="fa fa-comments-o fa-fw"></i> Форум підтримки</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="https://oc3.best-things.com.ua/admin/index.php?route=common/logout&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                ><i class="fa fa-sign-out"></i>
+                <span class="hidden-xs hidden-sm hidden-md">Вихід</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </header>
+      <nav id="column-left">
+        <div id="navigation"><span class="fa fa-bars"></span> Навігація</div>
+        <ul id="menu">
+          <li id="menu-dashboard">
+            <a
+              href="https://oc3.best-things.com.ua/admin/index.php?route=common/dashboard&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+              ><i class="fa fa-dashboard fw"></i> Панель стану</a
+            >
+          </li>
+          <li id="menu-catalog">
+            <a href="#collapse1" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-tags fw"></i> Каталог</a
+            >
+            <ul id="collapse1" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/category&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Категорії</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/product&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Товари</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/recurring&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Періодичні платежі</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/filter&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Фільтри</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse1-4"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Характеристики</a
+                >
+
+                <ul id="collapse1-4" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/attribute&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Характеристики</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/attribute_group&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Групи характеристик</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/option&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Опції</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/manufacturer&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Виробники</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/download&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Файли для завантаження</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/review&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Відгуки</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=catalog/information&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Статті</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-blog">
+            <a href="#collapse2" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-book fw"></i> Блог</a
+            >
+            <ul id="collapse2" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/article&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Статті блогу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/category&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Категорії блогу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/review&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Відгуки блогу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=blog/setting&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Налаштування блогу</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-extension">
+            <a href="#collapse3" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-puzzle-piece fw"></i> Доповнення</a
+            >
+            <ul id="collapse3" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/opencartforum&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Магазин OpenCartForum</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/marketplace&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Магазин OpenCart.com</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/installer&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Установка доповнень</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/extension&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi&amp;type=module"
+                  >Доповнення</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/modification&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Модифікатори</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/event&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Події</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-design">
+            <a href="#collapse4" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-television fw"></i> Дизайн</a
+            >
+            <ul id="collapse4" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/layout&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Макети</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/theme&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Редактор шаблонів</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/translation&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Редактор перекладу</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/banner&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Банери</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=design/seo_url&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >SEO URL</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-sale">
+            <a href="#collapse5" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-shopping-cart fw"></i> Продажі</a
+            >
+            <ul id="collapse5" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=sale/order&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Замовлення</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=sale/recurring&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Періодичні замовлення</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=sale/return&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Повернення товару</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse5-3"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Подарункові сертифікати</a
+                >
+
+                <ul id="collapse5-3" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=sale/voucher&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Подарункові сертифікати</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=sale/voucher_theme&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Тематика</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li id="menu-customer">
+            <a href="#collapse6" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-user fw"></i> Покупці</a
+            >
+            <ul id="collapse6" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/customer&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Покупці</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/customer_group&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Групи покупців</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/customer_approval&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Активація покупців</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=customer/custom_field&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Настроювані поля</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li id="menu-marketing">
+            <a href="#collapse7" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-share-alt fw"></i> Маркетинг</a
+            >
+            <ul id="collapse7" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketing/marketing&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Маркетинг</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketing/coupon&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Купони</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketing/contact&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Пошта</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse7-3"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Google Shopping</a
+                >
+
+                <ul id="collapse7-3" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=extension/advertise/google&amp;store_id=0&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Ваш магазин</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li id="menu-system">
+            <a href="#collapse8" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-cog fw"></i> Система</a
+            >
+            <ul id="collapse8" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=setting/store&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Налаштування</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#collapse8-1"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Користувачі</a
+                >
+
+                <ul id="collapse8-1" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=user/user&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Користувачі</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=user/user_permission&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Групи користувачів</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=user/api&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >API</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="#collapse8-2"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Локалізація</a
+                >
+
+                <ul id="collapse8-2" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/location&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Місцезнаходження</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/language&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Мови</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/currency&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Валюта</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/stock_status&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Стан на складі</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/order_status&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Статус замовлень</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#collapse-8-2-5"
+                      data-toggle="collapse"
+                      class="parent collapsed"
+                      >Повернення товару</a
+                    >
+                    <ul id="collapse-8-2-5" class="collapse">
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/return_status&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                          >Статуси повернення</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/return_action&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                          >Операції повернення</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/return_reason&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                          >Причини повернення</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/country&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Країни</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/zone&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Регіони</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/geo_zone&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Географічні зони</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#collapse-8-2-9"
+                      data-toggle="collapse"
+                      class="parent collapsed"
+                      >Податки</a
+                    >
+                    <ul id="collapse-8-2-9" class="collapse">
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/tax_class&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                          >Податкові класи</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/tax_rate&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                          >Податкові ставки</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/length_class&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Одиниці виміру</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=localisation/weight_class&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Одиниці ваги</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="#collapse8-3"
+                  data-toggle="collapse"
+                  class="parent collapsed"
+                  >Обслуговування</a
+                >
+
+                <ul id="collapse8-3" class="collapse">
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=tool/backup&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Бекап / Відновлення</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=tool/upload&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Завантаження</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://oc3.best-things.com.ua/admin/index.php?route=tool/log&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                      >Журнал помилок</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li id="menu-report">
+            <a href="#collapse9" data-toggle="collapse" class="parent collapsed"
+              ><i class="fa fa-bar-chart fw"></i> Звіти</a
+            >
+            <ul id="collapse9" class="collapse">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=report/report&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Звіти</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=report/online&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Покупці онлайн</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=report/statistics&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Статистика</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div id="stats">
+          <ul>
+            <li>
+              <div>Завершених замовлень <span class="pull-right">0%</span></div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-success"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 0%"
+                >
+                  <span class="sr-only">0%</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div>Замовлень в процесі <span class="pull-right">0%</span></div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-warning"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 0%"
+                >
+                  <span class="sr-only">0%</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div>Інші замовлення <span class="pull-right">0%</span></div>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-danger"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 0%"
+                >
+                  <span class="sr-only">0%</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <style>
+        .ui-autocomplete {
+          position: absolute;
+          z-index: 1050;
+          max-height: 240px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          padding: 4px 0;
+        }
+
+        .ui-autocomplete .ui-menu-item-wrapper {
+          padding: 6px 12px;
+          color: #333;
+        }
+
+        .ui-autocomplete .ui-state-active {
+          margin: 0;
+          border: none;
+          background-color: #e8f0fe;
+          color: #0b5394;
+        }
+      </style>
+      <div id="content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <div class="pull-right">
+              <button
+                type="submit"
+                form="form-qmenu"
+                data-toggle="tooltip"
+                title="Зберегти"
+                class="btn btn-primary"
+              >
+                <i class="fa fa-save"></i>
+              </button>
+              <a
+                href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/extension&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi&amp;type=module"
+                data-toggle="tooltip"
+                title="Скасувати"
+                class="btn btn-default"
+                ><i class="fa fa-reply"></i
+              ></a>
+            </div>
+            <h1>Qmenu</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=common/dashboard&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Головна</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=marketplace/extension&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi&amp;type=module"
+                  >Розширення</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://oc3.best-things.com.ua/admin/index.php?route=extension/module/qmenu&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                  >Qmenu</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <i class="fa fa-cog"></i> Редагування Qmenu
+              </h3>
+            </div>
+            <div class="panel-body">
+              <form
+                action="https://oc3.best-things.com.ua/admin/index.php?route=extension/module/qmenu&amp;user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi"
+                method="post"
+                enctype="multipart/form-data"
+                id="form-qmenu"
+                class="form-horizontal"
+              >
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-status"
+                    >Статус</label
+                  >
+                  <div class="col-sm-10">
+                    <select
+                      name="module_qmenu_status"
+                      id="input-status"
+                      class="form-control"
+                    >
+                      <option value="1" selected="selected">Увімкнено</option>
+                      <option value="0">Вимкнено</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-label"
+                    >Підпис кнопки</label
+                  >
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      name="module_qmenu_label"
+                      value="Qmenu"
+                      placeholder="Підпис кнопки"
+                      id="input-label"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <fieldset>
+                  <legend>Пункти меню</legend>
+                  <div class="table-responsive">
+                    <table
+                      id="qmenu-items"
+                      class="table table-bordered table-hover"
+                    >
+                      <thead>
+                        <tr>
+                          <td class="text-center" style="width: 30px">
+                            <i
+                              class="fa fa-arrows"
+                              title="Перетягніть для зміни порядку"
+                            ></i>
+                          </td>
+                          <td class="text-left">Назва</td>
+                          <td class="text-center">Колір</td>
+                          <td class="text-left">Тип</td>
+                          <td class="text-left">Призначення</td>
+                          <td class="text-center">Видимість</td>
+                          <td class="text-center">Нова вкладка</td>
+                          <td class="text-right">Видалення</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr id="qmenu-item-row0" class="qmenu-sortable-row">
+                          <td
+                            class="text-center qmenu-drag-handle"
+                            style="cursor: move; vertical-align: middle"
+                          >
+                            <i class="fa fa-bars text-muted"></i>
+                          </td>
+                          <td class="text-left">
+                            <input
+                              type="text"
+                              name="module_qmenu_items[0][label]"
+                              value="setting/store"
+                              placeholder="Назва"
+                              class="form-control qmenu-label-input"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <div
+                              class="input-group qmenu-color-group"
+                              data-row="0"
+                            >
+                              <span
+                                class="input-group-addon"
+                                style="
+                                  padding: 0;
+                                  border: none;
+                                  background: transparent;
+                                "
+                                ><input
+                                  type="color"
+                                  class="qmenu-color-picker"
+                                  value="#000000"
+                                  style="
+                                    width: 40px;
+                                    height: 34px;
+                                    border: none;
+                                    padding: 0;
+                                  "
+                              /></span>
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[0][color]"
+                                value="#000000"
+                                class="qmenu-color-value"
+                              />
+                              <span class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn btn-default qmenu-color-clear"
+                                  title="Очистити"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-left">
+                            <select
+                              name="module_qmenu_items[0][type]"
+                              class="form-control qmenu-type"
+                            >
+                              <option value="link">Посилання</option>
+                              <option value="route" selected="selected">
+                                Адмін-маршрут
+                              </option>
+                              <option value="category">Категорія</option>
+                              <option value="product">Товар</option>
+                              <option value="information">
+                                Інформаційна сторінка
+                              </option>
+                            </select>
+                          </td>
+                          <td class="text-left">
+                            <div
+                              class="qmenu-destination qmenu-destination-link"
+                              data-type="link"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[0][href]"
+                                value=""
+                                placeholder="Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product)."
+                                class="form-control qmenu-field-link"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-route"
+                              data-type="route"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[0][route]"
+                                value="setting/store"
+                                placeholder="Маршрут адмінки без токена (наприклад, catalog/product)."
+                                class="form-control qmenu-field-route"
+                                data-autocomplete="route"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-category"
+                              data-type="category"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[0][category_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="category"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[0][category_name]"
+                                value=""
+                                placeholder="Почніть вводити назву категорії для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="category"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-product"
+                              data-type="product"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[0][product_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="product"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[0][product_name]"
+                                value=""
+                                placeholder="Почніть вводити назву товару для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="product"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-information"
+                              data-type="information"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[0][information_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="information"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[0][information_name]"
+                                value=""
+                                placeholder="Почніть вводити назву інформаційної сторінки для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="information"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="hidden"
+                              name="module_qmenu_items[0][enabled]"
+                              value="0"
+                            />
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[0][enabled]"
+                              value="1"
+                              checked="checked"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[0][new_tab]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              data-row="qmenu-item-row0"
+                              class="btn btn-danger qmenu-remove"
+                            >
+                              <i class="fa fa-minus-circle"></i> Видалити
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="qmenu-item-row1" class="qmenu-sortable-row">
+                          <td
+                            class="text-center qmenu-drag-handle"
+                            style="cursor: move; vertical-align: middle"
+                          >
+                            <i class="fa fa-bars text-muted"></i>
+                          </td>
+                          <td class="text-left">
+                            <input
+                              type="text"
+                              name="module_qmenu_items[1][label]"
+                              value="marketplace/modification/refresh"
+                              placeholder="Назва"
+                              class="form-control qmenu-label-input"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <div
+                              class="input-group qmenu-color-group"
+                              data-row="1"
+                            >
+                              <span
+                                class="input-group-addon"
+                                style="
+                                  padding: 0;
+                                  border: none;
+                                  background: transparent;
+                                "
+                                ><input
+                                  type="color"
+                                  class="qmenu-color-picker"
+                                  value="#000000"
+                                  style="
+                                    width: 40px;
+                                    height: 34px;
+                                    border: none;
+                                    padding: 0;
+                                  "
+                              /></span>
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[1][color]"
+                                value="#000000"
+                                class="qmenu-color-value"
+                              />
+                              <span class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn btn-default qmenu-color-clear"
+                                  title="Очистити"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-left">
+                            <select
+                              name="module_qmenu_items[1][type]"
+                              class="form-control qmenu-type"
+                            >
+                              <option value="link">Посилання</option>
+                              <option value="route" selected="selected">
+                                Адмін-маршрут
+                              </option>
+                              <option value="category">Категорія</option>
+                              <option value="product">Товар</option>
+                              <option value="information">
+                                Інформаційна сторінка
+                              </option>
+                            </select>
+                          </td>
+                          <td class="text-left">
+                            <div
+                              class="qmenu-destination qmenu-destination-link"
+                              data-type="link"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[1][href]"
+                                value=""
+                                placeholder="Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product)."
+                                class="form-control qmenu-field-link"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-route"
+                              data-type="route"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[1][route]"
+                                value="marketplace/modification/refresh"
+                                placeholder="Маршрут адмінки без токена (наприклад, catalog/product)."
+                                class="form-control qmenu-field-route"
+                                data-autocomplete="route"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-category"
+                              data-type="category"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[1][category_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="category"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[1][category_name]"
+                                value=""
+                                placeholder="Почніть вводити назву категорії для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="category"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-product"
+                              data-type="product"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[1][product_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="product"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[1][product_name]"
+                                value=""
+                                placeholder="Почніть вводити назву товару для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="product"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-information"
+                              data-type="information"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[1][information_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="information"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[1][information_name]"
+                                value=""
+                                placeholder="Почніть вводити назву інформаційної сторінки для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="information"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="hidden"
+                              name="module_qmenu_items[1][enabled]"
+                              value="0"
+                            />
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[1][enabled]"
+                              value="1"
+                              checked="checked"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[1][new_tab]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              data-row="qmenu-item-row1"
+                              class="btn btn-danger qmenu-remove"
+                            >
+                              <i class="fa fa-minus-circle"></i> Видалити
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="qmenu-item-row2" class="qmenu-sortable-row">
+                          <td
+                            class="text-center qmenu-drag-handle"
+                            style="cursor: move; vertical-align: middle"
+                          >
+                            <i class="fa fa-bars text-muted"></i>
+                          </td>
+                          <td class="text-left">
+                            <input
+                              type="text"
+                              name="module_qmenu_items[2][label]"
+                              value="tool/log"
+                              placeholder="Назва"
+                              class="form-control qmenu-label-input"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <div
+                              class="input-group qmenu-color-group"
+                              data-row="2"
+                            >
+                              <span
+                                class="input-group-addon"
+                                style="
+                                  padding: 0;
+                                  border: none;
+                                  background: transparent;
+                                "
+                                ><input
+                                  type="color"
+                                  class="qmenu-color-picker"
+                                  value="#000000"
+                                  style="
+                                    width: 40px;
+                                    height: 34px;
+                                    border: none;
+                                    padding: 0;
+                                  "
+                              /></span>
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[2][color]"
+                                value="#000000"
+                                class="qmenu-color-value"
+                              />
+                              <span class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn btn-default qmenu-color-clear"
+                                  title="Очистити"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-left">
+                            <select
+                              name="module_qmenu_items[2][type]"
+                              class="form-control qmenu-type"
+                            >
+                              <option value="link">Посилання</option>
+                              <option value="route" selected="selected">
+                                Адмін-маршрут
+                              </option>
+                              <option value="category">Категорія</option>
+                              <option value="product">Товар</option>
+                              <option value="information">
+                                Інформаційна сторінка
+                              </option>
+                            </select>
+                          </td>
+                          <td class="text-left">
+                            <div
+                              class="qmenu-destination qmenu-destination-link"
+                              data-type="link"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[2][href]"
+                                value=""
+                                placeholder="Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product)."
+                                class="form-control qmenu-field-link"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-route"
+                              data-type="route"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[2][route]"
+                                value="tool/log"
+                                placeholder="Маршрут адмінки без токена (наприклад, catalog/product)."
+                                class="form-control qmenu-field-route"
+                                data-autocomplete="route"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-category"
+                              data-type="category"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[2][category_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="category"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[2][category_name]"
+                                value=""
+                                placeholder="Почніть вводити назву категорії для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="category"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-product"
+                              data-type="product"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[2][product_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="product"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[2][product_name]"
+                                value=""
+                                placeholder="Почніть вводити назву товару для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="product"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-information"
+                              data-type="information"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[2][information_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="information"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[2][information_name]"
+                                value=""
+                                placeholder="Почніть вводити назву інформаційної сторінки для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="information"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="hidden"
+                              name="module_qmenu_items[2][enabled]"
+                              value="0"
+                            />
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[2][enabled]"
+                              value="1"
+                              checked="checked"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[2][new_tab]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              data-row="qmenu-item-row2"
+                              class="btn btn-danger qmenu-remove"
+                            >
+                              <i class="fa fa-minus-circle"></i> Видалити
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="qmenu-item-row3" class="qmenu-sortable-row">
+                          <td
+                            class="text-center qmenu-drag-handle"
+                            style="cursor: move; vertical-align: middle"
+                          >
+                            <i class="fa fa-bars text-muted"></i>
+                          </td>
+                          <td class="text-left">
+                            <input
+                              type="text"
+                              name="module_qmenu_items[3][label]"
+                              value="marketplace/modification/clearlog"
+                              placeholder="Назва"
+                              class="form-control qmenu-label-input"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <div
+                              class="input-group qmenu-color-group"
+                              data-row="3"
+                            >
+                              <span
+                                class="input-group-addon"
+                                style="
+                                  padding: 0;
+                                  border: none;
+                                  background: transparent;
+                                "
+                                ><input
+                                  type="color"
+                                  class="qmenu-color-picker"
+                                  value="#c32828"
+                                  style="
+                                    width: 40px;
+                                    height: 34px;
+                                    border: none;
+                                    padding: 0;
+                                  "
+                              /></span>
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[3][color]"
+                                value="#c32828"
+                                class="qmenu-color-value"
+                              />
+                              <span class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn btn-default qmenu-color-clear"
+                                  title="Очистити"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-left">
+                            <select
+                              name="module_qmenu_items[3][type]"
+                              class="form-control qmenu-type"
+                            >
+                              <option value="link">Посилання</option>
+                              <option value="route" selected="selected">
+                                Адмін-маршрут
+                              </option>
+                              <option value="category">Категорія</option>
+                              <option value="product">Товар</option>
+                              <option value="information">
+                                Інформаційна сторінка
+                              </option>
+                            </select>
+                          </td>
+                          <td class="text-left">
+                            <div
+                              class="qmenu-destination qmenu-destination-link"
+                              data-type="link"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[3][href]"
+                                value=""
+                                placeholder="Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product)."
+                                class="form-control qmenu-field-link"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-route"
+                              data-type="route"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[3][route]"
+                                value="marketplace/modification/clearlog"
+                                placeholder="Маршрут адмінки без токена (наприклад, catalog/product)."
+                                class="form-control qmenu-field-route"
+                                data-autocomplete="route"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-category"
+                              data-type="category"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[3][category_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="category"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[3][category_name]"
+                                value=""
+                                placeholder="Почніть вводити назву категорії для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="category"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-product"
+                              data-type="product"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[3][product_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="product"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[3][product_name]"
+                                value=""
+                                placeholder="Почніть вводити назву товару для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="product"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-information"
+                              data-type="information"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[3][information_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="information"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[3][information_name]"
+                                value=""
+                                placeholder="Почніть вводити назву інформаційної сторінки для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="information"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="hidden"
+                              name="module_qmenu_items[3][enabled]"
+                              value="0"
+                            />
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[3][enabled]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[3][new_tab]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              data-row="qmenu-item-row3"
+                              class="btn btn-danger qmenu-remove"
+                            >
+                              <i class="fa fa-minus-circle"></i> Видалити
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="qmenu-item-row4" class="qmenu-sortable-row">
+                          <td
+                            class="text-center qmenu-drag-handle"
+                            style="cursor: move; vertical-align: middle"
+                          >
+                            <i class="fa fa-bars text-muted"></i>
+                          </td>
+                          <td class="text-left">
+                            <input
+                              type="text"
+                              name="module_qmenu_items[4][label]"
+                              value="blog/category"
+                              placeholder="Назва"
+                              class="form-control qmenu-label-input"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <div
+                              class="input-group qmenu-color-group"
+                              data-row="4"
+                            >
+                              <span
+                                class="input-group-addon"
+                                style="
+                                  padding: 0;
+                                  border: none;
+                                  background: transparent;
+                                "
+                                ><input
+                                  type="color"
+                                  class="qmenu-color-picker"
+                                  value="#000000"
+                                  style="
+                                    width: 40px;
+                                    height: 34px;
+                                    border: none;
+                                    padding: 0;
+                                  "
+                              /></span>
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[4][color]"
+                                value="#000000"
+                                class="qmenu-color-value"
+                              />
+                              <span class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn btn-default qmenu-color-clear"
+                                  title="Очистити"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-left">
+                            <select
+                              name="module_qmenu_items[4][type]"
+                              class="form-control qmenu-type"
+                            >
+                              <option value="link">Посилання</option>
+                              <option value="route" selected="selected">
+                                Адмін-маршрут
+                              </option>
+                              <option value="category">Категорія</option>
+                              <option value="product">Товар</option>
+                              <option value="information">
+                                Інформаційна сторінка
+                              </option>
+                            </select>
+                          </td>
+                          <td class="text-left">
+                            <div
+                              class="qmenu-destination qmenu-destination-link"
+                              data-type="link"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[4][href]"
+                                value=""
+                                placeholder="Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product)."
+                                class="form-control qmenu-field-link"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-route"
+                              data-type="route"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[4][route]"
+                                value="blog/category"
+                                placeholder="Маршрут адмінки без токена (наприклад, catalog/product)."
+                                class="form-control qmenu-field-route"
+                                data-autocomplete="route"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-category"
+                              data-type="category"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[4][category_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="category"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[4][category_name]"
+                                value=""
+                                placeholder="Почніть вводити назву категорії для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="category"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-product"
+                              data-type="product"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[4][product_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="product"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[4][product_name]"
+                                value=""
+                                placeholder="Почніть вводити назву товару для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="product"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-information"
+                              data-type="information"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[4][information_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="information"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[4][information_name]"
+                                value=""
+                                placeholder="Почніть вводити назву інформаційної сторінки для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="information"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="hidden"
+                              name="module_qmenu_items[4][enabled]"
+                              value="0"
+                            />
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[4][enabled]"
+                              value="1"
+                              checked="checked"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[4][new_tab]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              data-row="qmenu-item-row4"
+                              class="btn btn-danger qmenu-remove"
+                            >
+                              <i class="fa fa-minus-circle"></i> Видалити
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="qmenu-item-row5" class="qmenu-sortable-row">
+                          <td
+                            class="text-center qmenu-drag-handle"
+                            style="cursor: move; vertical-align: middle"
+                          >
+                            <i class="fa fa-bars text-muted"></i>
+                          </td>
+                          <td class="text-left">
+                            <input
+                              type="text"
+                              name="module_qmenu_items[5][label]"
+                              value="catalog/category"
+                              placeholder="Назва"
+                              class="form-control qmenu-label-input"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <div
+                              class="input-group qmenu-color-group"
+                              data-row="5"
+                            >
+                              <span
+                                class="input-group-addon"
+                                style="
+                                  padding: 0;
+                                  border: none;
+                                  background: transparent;
+                                "
+                                ><input
+                                  type="color"
+                                  class="qmenu-color-picker"
+                                  value="#000000"
+                                  style="
+                                    width: 40px;
+                                    height: 34px;
+                                    border: none;
+                                    padding: 0;
+                                  "
+                              /></span>
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[5][color]"
+                                value="#000000"
+                                class="qmenu-color-value"
+                              />
+                              <span class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn btn-default qmenu-color-clear"
+                                  title="Очистити"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-left">
+                            <select
+                              name="module_qmenu_items[5][type]"
+                              class="form-control qmenu-type"
+                            >
+                              <option value="link">Посилання</option>
+                              <option value="route" selected="selected">
+                                Адмін-маршрут
+                              </option>
+                              <option value="category">Категорія</option>
+                              <option value="product">Товар</option>
+                              <option value="information">
+                                Інформаційна сторінка
+                              </option>
+                            </select>
+                          </td>
+                          <td class="text-left">
+                            <div
+                              class="qmenu-destination qmenu-destination-link"
+                              data-type="link"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[5][href]"
+                                value=""
+                                placeholder="Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product)."
+                                class="form-control qmenu-field-link"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-route"
+                              data-type="route"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[5][route]"
+                                value="catalog/category"
+                                placeholder="Маршрут адмінки без токена (наприклад, catalog/product)."
+                                class="form-control qmenu-field-route"
+                                data-autocomplete="route"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-category"
+                              data-type="category"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[5][category_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="category"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[5][category_name]"
+                                value=""
+                                placeholder="Почніть вводити назву категорії для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="category"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-product"
+                              data-type="product"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[5][product_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="product"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[5][product_name]"
+                                value=""
+                                placeholder="Почніть вводити назву товару для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="product"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-information"
+                              data-type="information"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[5][information_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="information"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[5][information_name]"
+                                value=""
+                                placeholder="Почніть вводити назву інформаційної сторінки для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="information"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="hidden"
+                              name="module_qmenu_items[5][enabled]"
+                              value="0"
+                            />
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[5][enabled]"
+                              value="1"
+                              checked="checked"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[5][new_tab]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              data-row="qmenu-item-row5"
+                              class="btn btn-danger qmenu-remove"
+                            >
+                              <i class="fa fa-minus-circle"></i> Видалити
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="qmenu-item-row6" class="qmenu-sortable-row">
+                          <td
+                            class="text-center qmenu-drag-handle"
+                            style="cursor: move; vertical-align: middle"
+                          >
+                            <i class="fa fa-bars text-muted"></i>
+                          </td>
+                          <td class="text-left">
+                            <input
+                              type="text"
+                              name="module_qmenu_items[6][label]"
+                              value="Інформація про доставку"
+                              placeholder="Назва"
+                              class="form-control qmenu-label-input"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <div
+                              class="input-group qmenu-color-group"
+                              data-row="6"
+                            >
+                              <span
+                                class="input-group-addon"
+                                style="
+                                  padding: 0;
+                                  border: none;
+                                  background: transparent;
+                                "
+                                ><input
+                                  type="color"
+                                  class="qmenu-color-picker"
+                                  value="#000000"
+                                  style="
+                                    width: 40px;
+                                    height: 34px;
+                                    border: none;
+                                    padding: 0;
+                                  "
+                              /></span>
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[6][color]"
+                                value="#000000"
+                                class="qmenu-color-value"
+                              />
+                              <span class="input-group-btn">
+                                <button
+                                  type="button"
+                                  class="btn btn-default qmenu-color-clear"
+                                  title="Очистити"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </span>
+                            </div>
+                          </td>
+                          <td class="text-left">
+                            <select
+                              name="module_qmenu_items[6][type]"
+                              class="form-control qmenu-type"
+                            >
+                              <option value="link">Посилання</option>
+                              <option value="route">Адмін-маршрут</option>
+                              <option value="category" selected="selected">
+                                Категорія
+                              </option>
+                              <option value="product">Товар</option>
+                              <option value="information">
+                                Інформаційна сторінка
+                              </option>
+                            </select>
+                          </td>
+                          <td class="text-left">
+                            <div
+                              class="qmenu-destination qmenu-destination-link"
+                              data-type="link"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[6][href]"
+                                value=""
+                                placeholder="Абсолютне або відносне посилання (наприклад, https://example.com або index.php?route=catalog/product)."
+                                class="form-control qmenu-field-link"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-route"
+                              data-type="route"
+                              style="display: none"
+                            >
+                              <input
+                                type="text"
+                                name="module_qmenu_items[6][route]"
+                                value=""
+                                placeholder="Маршрут адмінки без токена (наприклад, catalog/product)."
+                                class="form-control qmenu-field-route"
+                                data-autocomplete="route"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-category"
+                              data-type="category"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[6][category_id]"
+                                value="47"
+                                class="qmenu-entity-id"
+                                data-entity="category"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[6][category_name]"
+                                value="47"
+                                placeholder="Почніть вводити назву категорії для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="category"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-product"
+                              data-type="product"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[6][product_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="product"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[6][product_name]"
+                                value=""
+                                placeholder="Почніть вводити назву товару для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="product"
+                              />
+                            </div>
+                            <div
+                              class="qmenu-destination qmenu-destination-information"
+                              data-type="information"
+                              style="display: none"
+                            >
+                              <input
+                                type="hidden"
+                                name="module_qmenu_items[6][information_id]"
+                                value="0"
+                                class="qmenu-entity-id"
+                                data-entity="information"
+                              />
+                              <input
+                                type="text"
+                                name="module_qmenu_items[6][information_name]"
+                                value=""
+                                placeholder="Почніть вводити назву інформаційної сторінки для пошуку."
+                                class="form-control qmenu-entity-input"
+                                data-autocomplete="information"
+                              />
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="hidden"
+                              name="module_qmenu_items[6][enabled]"
+                              value="0"
+                            />
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[6][enabled]"
+                              value="1"
+                              checked="checked"
+                            />
+                          </td>
+                          <td class="text-center">
+                            <input
+                              type="checkbox"
+                              name="module_qmenu_items[6][new_tab]"
+                              value="1"
+                            />
+                          </td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              data-row="qmenu-item-row6"
+                              class="btn btn-danger qmenu-remove"
+                            >
+                              <i class="fa fa-minus-circle"></i> Видалити
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="8"></td>
+                          <td class="text-right">
+                            <button
+                              type="button"
+                              id="qmenu-add-item"
+                              class="btn btn-primary"
+                            >
+                              <i class="fa fa-plus-circle"></i> Додати пункт
+                            </button>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                  <p class="help-block">
+                    Якщо позначено, посилання відкриється у новій вкладці.
+                  </p>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        <!--
+        var qmenuItemRow = 7;
+        var qmenuRoutes = [
+          "blog\/article",
+          "blog\/category",
+          "blog\/review",
+          "blog\/setting",
+          "catalog\/attribute",
+          "catalog\/attribute_group",
+          "catalog\/category",
+          "catalog\/download",
+          "catalog\/filter",
+          "catalog\/information",
+          "catalog\/manufacturer",
+          "catalog\/option",
+          "catalog\/product",
+          "catalog\/recurring",
+          "catalog\/review",
+          "common\/column_left",
+          "common\/dashboard",
+          "common\/developer",
+          "common\/filemanager",
+          "common\/footer",
+          "common\/forgotten",
+          "common\/header",
+          "common\/login",
+          "common\/logout",
+          "common\/profile",
+          "common\/reset",
+          "common\/security",
+          "customer\/custom_field",
+          "customer\/customer",
+          "customer\/customer_approval",
+          "customer\/customer_group",
+          "design\/banner",
+          "design\/layout",
+          "design\/seo_url",
+          "design\/theme",
+          "design\/translation",
+          "error\/not_found",
+          "error\/permission",
+          "event\/language",
+          "event\/statistics",
+          "event\/theme",
+          "extension\/advertise\/google",
+          "extension\/analytics\/google",
+          "extension\/captcha\/basic",
+          "extension\/captcha\/google",
+          "extension\/currency\/cbr",
+          "extension\/currency\/ecb",
+          "extension\/currency\/fixer",
+          "extension\/currency\/nbu",
+          "extension\/dashboard\/activity",
+          "extension\/dashboard\/chart",
+          "extension\/dashboard\/customer",
+          "extension\/dashboard\/domovoy",
+          "extension\/dashboard\/map",
+          "extension\/dashboard\/online",
+          "extension\/dashboard\/order",
+          "extension\/dashboard\/recent",
+          "extension\/dashboard\/sale",
+          "extension\/extension\/advertise",
+          "extension\/extension\/analytics",
+          "extension\/extension\/captcha",
+          "extension\/extension\/currency",
+          "extension\/extension\/dashboard",
+          "extension\/extension\/feed",
+          "extension\/extension\/fraud",
+          "extension\/extension\/menu",
+          "extension\/extension\/module",
+          "extension\/extension\/payment",
+          "extension\/extension\/report",
+          "extension\/extension\/shipping",
+          "extension\/extension\/theme",
+          "extension\/extension\/total",
+          "extension\/feed\/google_base",
+          "extension\/feed\/google_sitemap",
+          "extension\/fraud\/fraudlabspro",
+          "extension\/fraud\/ip",
+          "extension\/fraud\/maxmind",
+          "extension\/module\/account",
+          "extension\/module\/amazon_login",
+          "extension\/module\/amazon_pay",
+          "extension\/module\/banner",
+          "extension\/module\/bestseller",
+          "extension\/module\/blog_category",
+          "extension\/module\/blog_featured",
+          "extension\/module\/blog_latest",
+          "extension\/module\/carousel",
+          "extension\/module\/category",
+          "extension\/module\/divido_calculator",
+          "extension\/module\/featured",
+          "extension\/module\/featured_article",
+          "extension\/module\/featured_product",
+          "extension\/module\/filter",
+          "extension\/module\/google_hangouts",
+          "extension\/module\/html",
+          "extension\/module\/information",
+          "extension\/module\/klarna_checkout_module",
+          "extension\/module\/latest",
+          "extension\/module\/laybuy_layout",
+          "extension\/module\/paypal_smart_button",
+          "extension\/module\/pilibaba_button",
+          "extension\/module\/pp_braintree_button",
+          "extension\/module\/qmenu",
+          "extension\/module\/sagepay_direct_cards",
+          "extension\/module\/sagepay_server_cards",
+          "extension\/module\/slideshow",
+          "extension\/module\/special",
+          "extension\/module\/store",
+          "extension\/payment\/alipay",
+          "extension\/payment\/alipay_cross",
+          "extension\/payment\/amazon_login_pay",
+          "extension\/payment\/authorizenet_aim",
+          "extension\/payment\/authorizenet_sim",
+          "extension\/payment\/bank_transfer",
+          "extension\/payment\/bluepay_hosted",
+          "extension\/payment\/bluepay_redirect",
+          "extension\/payment\/cardconnect",
+          "extension\/payment\/cardinity",
+          "extension\/payment\/cheque",
+          "extension\/payment\/cod",
+          "extension\/payment\/divido",
+          "extension\/payment\/eway",
+          "extension\/payment\/firstdata",
+          "extension\/payment\/firstdata_remote",
+          "extension\/payment\/free_checkout",
+          "extension\/payment\/g2apay",
+          "extension\/payment\/globalpay",
+          "extension\/payment\/globalpay_remote",
+          "extension\/payment\/klarna_account",
+          "extension\/payment\/klarna_checkout",
+          "extension\/payment\/klarna_invoice",
+          "extension\/payment\/laybuy",
+          "extension\/payment\/liqpay",
+          "extension\/payment\/nochex",
+          "extension\/payment\/paymate",
+          "extension\/payment\/paypal",
+          "extension\/payment\/paypoint",
+          "extension\/payment\/payza",
+          "extension\/payment\/perpetual_payments",
+          "extension\/payment\/pilibaba",
+          "extension\/payment\/pp_braintree",
+          "extension\/payment\/pp_express",
+          "extension\/payment\/pp_payflow",
+          "extension\/payment\/pp_payflow_iframe",
+          "extension\/payment\/pp_pro",
+          "extension\/payment\/pp_pro_iframe",
+          "extension\/payment\/pp_standard",
+          "extension\/payment\/realex",
+          "extension\/payment\/realex_remote",
+          "extension\/payment\/sagepay_direct",
+          "extension\/payment\/sagepay_server",
+          "extension\/payment\/sagepay_us",
+          "extension\/payment\/securetrading_pp",
+          "extension\/payment\/securetrading_ws",
+          "extension\/payment\/skrill",
+          "extension\/payment\/squareup",
+          "extension\/payment\/twocheckout",
+          "extension\/payment\/web_payment_software",
+          "extension\/payment\/wechat_pay",
+          "extension\/payment\/worldpay",
+          "extension\/report\/customer_activity",
+          "extension\/report\/customer_order",
+          "extension\/report\/customer_reward",
+          "extension\/report\/customer_search",
+          "extension\/report\/customer_transaction",
+          "extension\/report\/marketing",
+          "extension\/report\/product_purchased",
+          "extension\/report\/product_viewed",
+          "extension\/report\/sale_coupon",
+          "extension\/report\/sale_order",
+          "extension\/report\/sale_return",
+          "extension\/report\/sale_shipping",
+          "extension\/report\/sale_tax",
+          "extension\/shipping\/auspost",
+          "extension\/shipping\/ec_ship",
+          "extension\/shipping\/fedex",
+          "extension\/shipping\/flat",
+          "extension\/shipping\/free",
+          "extension\/shipping\/item",
+          "extension\/shipping\/parcelforce_48",
+          "extension\/shipping\/pickup",
+          "extension\/shipping\/royal_mail",
+          "extension\/shipping\/ups",
+          "extension\/shipping\/usps",
+          "extension\/shipping\/weight",
+          "extension\/theme\/default",
+          "extension\/total\/coupon",
+          "extension\/total\/credit",
+          "extension\/total\/handling",
+          "extension\/total\/klarna_fee",
+          "extension\/total\/low_order_fee",
+          "extension\/total\/reward",
+          "extension\/total\/shipping",
+          "extension\/total\/sub_total",
+          "extension\/total\/tax",
+          "extension\/total\/total",
+          "extension\/total\/voucher",
+          "localisation\/country",
+          "localisation\/currency",
+          "localisation\/geo_zone",
+          "localisation\/language",
+          "localisation\/length_class",
+          "localisation\/location",
+          "localisation\/order_status",
+          "localisation\/return_action",
+          "localisation\/return_reason",
+          "localisation\/return_status",
+          "localisation\/stock_status",
+          "localisation\/tax_class",
+          "localisation\/tax_rate",
+          "localisation\/weight_class",
+          "localisation\/zone",
+          "mail\/affiliate",
+          "mail\/customer",
+          "mail\/forgotten",
+          "mail\/return",
+          "mail\/reward",
+          "mail\/transaction",
+          "marketing\/contact",
+          "marketing\/coupon",
+          "marketing\/marketing",
+          "marketplace\/api",
+          "marketplace\/event",
+          "marketplace\/extension",
+          "marketplace\/install",
+          "marketplace\/installer",
+          "marketplace\/marketplace",
+          "marketplace\/modification",
+          "marketplace\/opencartforum",
+          "marketplace\/promotion",
+          "report\/online",
+          "report\/report",
+          "report\/statistics",
+          "sale\/order",
+          "sale\/recurring",
+          "sale\/return",
+          "sale\/voucher",
+          "sale\/voucher_theme",
+          "search\/search",
+          "setting\/setting",
+          "setting\/store",
+          "startup\/error",
+          "startup\/event",
+          "startup\/login",
+          "startup\/permission",
+          "startup\/router",
+          "startup\/sass",
+          "startup\/startup",
+          "tool\/backup",
+          "tool\/log",
+          "tool\/upload",
+          "user\/api",
+          "user\/user",
+          "user\/user_permission",
+        ];
+
+        $("#qmenu-add-item").on("click", function () {
+          var rowId = "qmenu-item-row" + qmenuItemRow;
+          var html = '<tr id="' + rowId + '" class="qmenu-sortable-row">';
+          html +=
+            '  <td class="text-center qmenu-drag-handle" style="cursor: move; vertical-align: middle;"><i class="fa fa-bars text-muted"></i></td>';
+          html +=
+            '  <td class="text-left"><input type="text" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][label]" value="" placeholder="\u041D\u0430\u0437\u0432\u0430" class="form-control qmenu-label-input" /></td>';
+          html +=
+            '  <td class="text-center"><div class="input-group qmenu-color-group" data-row="' +
+            qmenuItemRow +
+            '"><span class="input-group-addon" style="padding:0;border:none;background:transparent;"><input type="color" class="qmenu-color-picker" value="#000000" style="width:40px;height:34px;border:none;padding:0;" /></span><input type="hidden" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][color]" value="#000000" class="qmenu-color-value" /><span class="input-group-btn"><button type="button" class="btn btn-default qmenu-color-clear" title="\u041E\u0447\u0438\u0441\u0442\u0438\u0442\u0438"><span aria-hidden="true">&times;</span></button></span></div></td>';
+          html +=
+            '  <td class="text-left"><select name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][type]" class="form-control qmenu-type">';
+          html +=
+            '    <option value="link">\u041F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F</option>';
+          html +=
+            '    <option value="route">\u0410\u0434\u043C\u0456\u043D\u002D\u043C\u0430\u0440\u0448\u0440\u0443\u0442</option>';
+          html +=
+            '    <option value="category">\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0456\u044F</option>';
+          html +=
+            '    <option value="product">\u0422\u043E\u0432\u0430\u0440</option>';
+          html +=
+            '    <option value="information">\u0406\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0456\u0439\u043D\u0430\u0020\u0441\u0442\u043E\u0440\u0456\u043D\u043A\u0430</option>';
+          html += "  </select></td>";
+          html += '  <td class="text-left">';
+          html +=
+            '    <div class="qmenu-destination qmenu-destination-link" data-type="link">';
+          html +=
+            '      <input type="text" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][href]" value="" placeholder="\u0410\u0431\u0441\u043E\u043B\u044E\u0442\u043D\u0435\u0020\u0430\u0431\u043E\u0020\u0432\u0456\u0434\u043D\u043E\u0441\u043D\u0435\u0020\u043F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F\u0020\u0028\u043D\u0430\u043F\u0440\u0438\u043A\u043B\u0430\u0434,\u0020https\u003A\/\/example.com\u0020\u0430\u0431\u043E\u0020index.php\u003Froute\u003Dcatalog\/product\u0029." class="form-control qmenu-field-link" />';
+          html += "    </div>";
+          html +=
+            '    <div class="qmenu-destination qmenu-destination-route" data-type="route" style="display:none">';
+          html +=
+            '      <input type="text" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][route]" value="" placeholder="\u041C\u0430\u0440\u0448\u0440\u0443\u0442\u0020\u0430\u0434\u043C\u0456\u043D\u043A\u0438\u0020\u0431\u0435\u0437\u0020\u0442\u043E\u043A\u0435\u043D\u0430\u0020\u0028\u043D\u0430\u043F\u0440\u0438\u043A\u043B\u0430\u0434,\u0020catalog\/product\u0029." class="form-control qmenu-field-route" data-autocomplete="route" />';
+          html += "    </div>";
+          html +=
+            '    <div class="qmenu-destination qmenu-destination-category" data-type="category" style="display:none">';
+          html +=
+            '      <input type="hidden" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][category_id]" value="0" class="qmenu-entity-id" data-entity="category" />';
+          html +=
+            '      <input type="text" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][category_name]" value="" placeholder="\u041F\u043E\u0447\u043D\u0456\u0442\u044C\u0020\u0432\u0432\u043E\u0434\u0438\u0442\u0438\u0020\u043D\u0430\u0437\u0432\u0443\u0020\u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0456\u0457\u0020\u0434\u043B\u044F\u0020\u043F\u043E\u0448\u0443\u043A\u0443." class="form-control qmenu-entity-input" data-autocomplete="category" />';
+          html += "    </div>";
+          html +=
+            '    <div class="qmenu-destination qmenu-destination-product" data-type="product" style="display:none">';
+          html +=
+            '      <input type="hidden" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][product_id]" value="0" class="qmenu-entity-id" data-entity="product" />';
+          html +=
+            '      <input type="text" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][product_name]" value="" placeholder="\u041F\u043E\u0447\u043D\u0456\u0442\u044C\u0020\u0432\u0432\u043E\u0434\u0438\u0442\u0438\u0020\u043D\u0430\u0437\u0432\u0443\u0020\u0442\u043E\u0432\u0430\u0440\u0443\u0020\u0434\u043B\u044F\u0020\u043F\u043E\u0448\u0443\u043A\u0443." class="form-control qmenu-entity-input" data-autocomplete="product" />';
+          html += "    </div>";
+          html +=
+            '    <div class="qmenu-destination qmenu-destination-information" data-type="information" style="display:none">';
+          html +=
+            '      <input type="hidden" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][information_id]" value="0" class="qmenu-entity-id" data-entity="information" />';
+          html +=
+            '      <input type="text" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][information_name]" value="" placeholder="\u041F\u043E\u0447\u043D\u0456\u0442\u044C\u0020\u0432\u0432\u043E\u0434\u0438\u0442\u0438\u0020\u043D\u0430\u0437\u0432\u0443\u0020\u0456\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0456\u0439\u043D\u043E\u0457\u0020\u0441\u0442\u043E\u0440\u0456\u043D\u043A\u0438\u0020\u0434\u043B\u044F\u0020\u043F\u043E\u0448\u0443\u043A\u0443." class="form-control qmenu-entity-input" data-autocomplete="information" />';
+          html += "    </div>";
+          html += "  </td>";
+          html +=
+            '  <td class="text-center"><input type="hidden" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][enabled]" value="0" /><input type="checkbox" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][enabled]" value="1" checked="checked" /></td>';
+          html +=
+            '  <td class="text-center"><input type="checkbox" name="module_qmenu_items[' +
+            qmenuItemRow +
+            '][new_tab]" value="1" /></td>';
+          html +=
+            '  <td class="text-right"><button type="button" data-row="' +
+            rowId +
+            '" class="btn btn-danger qmenu-remove"><i class="fa fa-minus-circle"></i> \u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438</button></td>';
+          html += "</tr>";
+
+          $("#qmenu-items tbody").append(html);
+
+          qmenuItemRow++;
+          attachAutocomplete($("#" + rowId));
+          attachColorControls($("#" + rowId));
+
+          // Re-initialize sortable for the new row
+          $("#qmenu-items tbody").sortable("refresh");
+        });
+
+        $("#qmenu-items").on("click", ".qmenu-remove", function () {
+          var rowId = $(this).data("row");
+          $("#" + rowId).remove();
+          updateRowIndexes();
+        });
+
+        $("#qmenu-items").on("change", ".qmenu-type", function () {
+          var row = $(this).closest("tr");
+          var type = $(this).val();
+
+          row.find(".qmenu-destination").hide();
+          row.find(".qmenu-destination-" + type).show();
+
+          if (type === "link") {
+            row.find(".qmenu-field-route").val("");
+            row.find(".qmenu-entity-id").val("0");
+            row.find(".qmenu-entity-input").val("");
+          } else if (type === "route") {
+            row.find(".qmenu-field-link").val("");
+            row.find(".qmenu-entity-id").val("0");
+            row.find(".qmenu-entity-input").val("");
+          } else if (
+            type === "category" ||
+            type === "product" ||
+            type === "information"
+          ) {
+            row.find(".qmenu-field-link").val("");
+            row.find(".qmenu-field-route").val("");
+          }
+
+          attachAutocomplete(row);
+        });
+
+        $("#qmenu-items .qmenu-type").trigger("change");
+
+        attachAutocomplete($("#qmenu-items"));
+        attachColorControls($("#qmenu-items"));
+
+        // Initialize sortable functionality
+        $("#qmenu-items tbody").sortable({
+          handle: ".qmenu-drag-handle",
+          placeholder: "qmenu-sortable-placeholder",
+          helper: "clone",
+          opacity: 0.8,
+          update: function (event, ui) {
+            updateRowIndexes();
+          },
+        });
+
+        function updateRowIndexes() {
+          $("#qmenu-items tbody tr.qmenu-sortable-row").each(function (index) {
+            var $row = $(this);
+            var oldId = $row.attr("id");
+            var newId = "qmenu-item-row" + index;
+
+            // Update row ID
+            $row.attr("id", newId);
+
+            // Update all input names and IDs
+            $row.find("input, select").each(function () {
+              var $input = $(this);
+              var name = $input.attr("name");
+              if (name) {
+                name = name.replace(/\[\d+\]/, "[" + index + "]");
+                $input.attr("name", name);
+              }
+            });
+
+            // Update remove button data-row attribute
+            $row.find(".qmenu-remove").attr("data-row", newId);
+
+            // Update color group data-row attribute
+            $row.find(".qmenu-color-group").attr("data-row", index);
+          });
+        }
+
+        function attachAutocomplete(context) {
+          context.find("[data-autocomplete]").each(function () {
+            var $input = $(this);
+
+            if ($input.data("qmenu-autocomplete")) {
+              return;
+            }
+
+            var type = $input.data("autocomplete");
+
+            if (!$input.data("qmenu-entity-listener") && type !== "route") {
+              $input.on("input", function () {
+                $(this)
+                  .closest(".qmenu-destination")
+                  .find(".qmenu-entity-id")
+                  .val("0");
+              });
+              $input.data("qmenu-entity-listener", true);
+            }
+
+            $input.data("qmenu-autocomplete", true);
+
+            if (type === "route") {
+              $input.autocomplete({
+                minLength: 0,
+                autoFocus: true,
+                source: function (request, response) {
+                  var term = request;
+
+                  if (
+                    typeof request === "object" &&
+                    request.term !== undefined
+                  ) {
+                    term = request.term;
+                  }
+
+                  var results = [];
+
+                  if (term) {
+                    var lower = term.toLowerCase();
+
+                    for (var i = 0; i < qmenuRoutes.length; i++) {
+                      if (qmenuRoutes[i].toLowerCase().indexOf(lower) !== -1) {
+                        results.push(qmenuRoutes[i]);
+
+                        if (results.length >= 20) {
+                          break;
+                        }
+                      }
+                    }
+                  } else {
+                    results = qmenuRoutes.slice(0, 20);
+                  }
+
+                  response(
+                    $.map(results, function (route) {
+                      return {
+                        label: route,
+                        value: route,
+                      };
+                    })
+                  );
+                },
+                focus: function (event, ui) {
+                  event.preventDefault();
+                  $input.val(ui.item["label"]);
+                },
+                select: function (event, ui) {
+                  $input.val(ui.item["value"]);
+
+                  var $labelInput = $input
+                    .closest("tr")
+                    .find(".qmenu-label-input");
+
+                  if ($labelInput.val() === "") {
+                    $labelInput.val(ui.item["value"]);
+                  }
+                },
+              });
+            } else {
+              $input.autocomplete({
+                minLength: 0,
+                autoFocus: true,
+                source: function (request, response) {
+                  var term = request;
+
+                  if (
+                    typeof request === "object" &&
+                    request.term !== undefined
+                  ) {
+                    term = request.term;
+                  }
+
+                  $.ajax({
+                    url:
+                      "index.php?route=extension/module/qmenu/autocomplete&user_token=85OkqzNhW6Ug7I9qbC9sPhg5qEcNeXSi&type=" +
+                      type +
+                      "&filter_name=" +
+                      encodeURIComponent(term || ""),
+                    dataType: "json",
+                    success: function (json) {
+                      response(
+                        $.map(json, function (item) {
+                          return {
+                            label: item["label"],
+                            value: item["value"],
+                          };
+                        })
+                      );
+                    },
+                  });
+                },
+                focus: function (event, ui) {
+                  event.preventDefault();
+                  $input.val(ui.item["label"]);
+                },
+                select: function (event, ui) {
+                  $input.val(ui.item["label"]);
+                  var $destination = $input.closest(".qmenu-destination");
+                  $destination.find(".qmenu-entity-id").val(ui.item["value"]);
+
+                  var $labelInput = $input
+                    .closest("tr")
+                    .find(".qmenu-label-input");
+
+                  if ($labelInput.val() === "") {
+                    $labelInput.val(ui.item["label"]);
+                  }
+                },
+              });
+            }
+
+            $input.on("focus", function () {
+              var current = $(this).val();
+              $(this).autocomplete("search", current || "");
+            });
+          });
+
+          attachColorControls(context);
+        }
+
+        function attachColorControls(context) {
+          context.find(".qmenu-color-group").each(function () {
+            var $group = $(this);
+
+            if ($group.data("qmenu-color-initialized")) {
+              return;
+            }
+
+            $group.data("qmenu-color-initialized", true);
+
+            var $picker = $group.find(".qmenu-color-picker");
+            var $value = $group.find(".qmenu-color-value");
+            var $clear = $group.find(".qmenu-color-clear");
+
+            if ($value.val()) {
+              $picker.val($value.val());
+            } else {
+              $picker.val("#000000");
+            }
+
+            $picker.on("change input", function () {
+              var val = $(this).val();
+              if (val) {
+                $value.val(val);
+              }
+            });
+
+            $clear.on("click", function () {
+              $value.val("");
+              $picker.val("#000000");
+            });
+          });
+        }
+        -->
+      </script>
+      <footer id="footer">
+        <a
+          target="_blank"
+          href="https://ocstore.com/?utm_source=ocstore3_install"
+          >ocStore</a
+        >
+        &copy; 2009-2025 Всі права захищені.<br />Версія ocStore 3.0.3.7
+      </footer>
+    </div>
+  </body>
+</html>
