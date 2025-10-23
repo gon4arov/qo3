@@ -69,6 +69,9 @@
 
             return [
                 '<tr id="', rowId, '" class="qmenu-sortable-row">',
+                  '<td class="text-center qmenu-row-number" style="vertical-align: middle;">',
+                    '<strong>', (index + 1), '</strong>',
+                  '</td>',
                   '<td class="text-center qmenu-drag-handle" style="cursor: move; vertical-align: middle;">',
                     '<i class="fa fa-bars text-muted"></i>',
                   '</td>',
@@ -201,6 +204,9 @@
 
                 $row.find('.qmenu-remove').attr('data-row', newId);
                 $row.find('.qmenu-color-group').attr('data-row', index);
+
+                // Update row number
+                $row.find('.qmenu-row-number strong').text(index + 1);
             });
         },
 

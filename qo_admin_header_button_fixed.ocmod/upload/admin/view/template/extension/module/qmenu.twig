@@ -48,7 +48,8 @@
               <table id="qmenu-items" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <td class="text-left" style="width: 30px;"><i class="fa fa-arrows" title="{{ text_drag_to_reorder }}"></i></td>
+                    <td class="text-center" style="width: 40px;">#</td>
+                    <td class="text-center" style="width: 30px;"><i class="fa fa-arrows" title="{{ text_drag_to_reorder }}"></i></td>
                     <td class="text-left">{{ column_label }}</td>
                     <td class="text-left">{{ column_color }}</td>
                     <td class="text-left">{{ column_type }}</td>
@@ -62,6 +63,9 @@
                   {% set item_row = 0 %}
                   {% for item in items %}
                   <tr id="qmenu-item-row{{ item_row }}" class="qmenu-sortable-row">
+                    <td class="text-center qmenu-row-number" style="vertical-align: middle;">
+                      <strong>{{ item_row + 1 }}</strong>
+                    </td>
                     <td class="text-center qmenu-drag-handle" style="cursor: move; vertical-align: middle;">
                       <i class="fa fa-bars text-muted"></i>
                     </td>
