@@ -164,3 +164,4 @@ When `module_qmenu_items` is null (first time), default items are created:
 - View: `qo_admin_header_button_fixed.ocmod/upload/admin/view/template/extension/module/qmenu.twig`
 - Language EN: `qo_admin_header_button_fixed.ocmod/upload/admin/language/en-gb/extension/module/qmenu.php`
 - Language UK: `qo_admin_header_button_fixed.ocmod/upload/admin/language/uk-ua/extension/module/qmenu.php`
+- Отвечай на русском языке

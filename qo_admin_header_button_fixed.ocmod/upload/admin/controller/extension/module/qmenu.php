@@ -2,15 +2,29 @@
 class ControllerExtensionModuleQmenu extends Controller {
     private $error = [];
     private $route_cache = null;
-    private $category_cache = [];
-    private $product_cache = [];
-    private $information_cache = [];
+    private $entity_cache = [
+        'category' => [],
+        'product' => [],
+        'information' => []
+    ];
+
+    private const COLOR_PATTERN = '~^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$~';
+    private const DEFAULT_COLOR = '#000000';
+
+    private const TYPE_HANDLERS = [
+        'link' => ['field' => 'href', 'required' => true],
+        'route' => ['field' => 'route', 'required' => true],
+        'category' => ['field' => 'category_id', 'entity' => true],
+        'product' => ['field' => 'product_id', 'entity' => true],
+        'information' => ['field' => 'information_id', 'entity' => true]
+    ];
 
     public function index(): void {
         $this->load->language('extension/module/qmenu');
 
         $this->document->setTitle($this->language->get('heading_title'));
         $this->document->addScript('view/javascript/jquery/ui/jquery-ui.min.js');
+        $this->document->addScript('view/javascript/qmenu.js');
         $this->document->addStyle('view/stylesheet/qmenu.css');
 
         $this->load->model('setting/setting');
@@ -100,6 +114,15 @@ class ControllerExtensionModuleQmenu extends Controller {
         $data['items'] = $items;
         $data['qmenu_routes'] = $this->getAvailableRoutes();
 
+        foreach (['heading_title', 'text_edit', 'text_enabled', 'text_disabled', 'text_extension', 'text_home',
+                  'entry_status', 'entry_button_label', 'entry_items',
+                  'column_label', 'column_color', 'column_type', 'column_destination', 'column_enabled', 'column_new_tab',
+                  'text_drag_to_reorder', 'text_type_link', 'text_type_route', 'text_type_category', 'text_type_product', 'text_type_information',
+                  'help_link', 'help_route', 'help_category', 'help_product', 'help_information',
+                  'button_save', 'button_cancel', 'button_add_item', 'button_clear_color'] as $key) {
+            $data[$key] = $this->language->get($key);
+        }
+
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
@@ -116,12 +139,11 @@ class ControllerExtensionModuleQmenu extends Controller {
     }
 
     private function sanitizeItems($items, string $fallback_label, bool $for_display = false): array {
-        $result = [];
-
         if (!is_array($items)) {
-            return $result;
+            return [];
         }
 
+        $result = [];
         $seen_keys = [];
 
         foreach ($items as $item) {
@@ -129,169 +151,143 @@ class ControllerExtensionModuleQmenu extends Controller {
                 continue;
             }
 
-            $type = isset($item['type']) ? (string) $item['type'] : 'link';
-            $href = isset($item['href']) ? trim((string) $item['href']) : '';
-            $route = isset($item['route']) ? trim((string) $item['route']) : '';
-            $new_tab = !empty($item['new_tab']) ? 1 : 0;
-            $enabled_raw = $item['enabled'] ?? 1;
+            $processed = $this->processMenuItem($item, $fallback_label);
 
-            if (is_array($enabled_raw)) {
-                $enabled_raw = end($enabled_raw);
-            }
-
-            $enabled = !empty($enabled_raw) ? 1 : 0;
-
-            $label = isset($item['label']) ? trim((string) $item['label']) : '';
-
-            $color = isset($item['color']) ? trim((string) $item['color']) : '#000000';
-
-            if ($color === '' || !preg_match('~^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$~', $color)) {
-                $color = '#000000';
-            }
-
-            $data = [
-                'label' => '',
-                'type' => $type,
-                'href' => '',
-                'route' => '',
-                'category_id' => 0,
-                'category_name' => '',
-                'product_id' => 0,
-                'product_name' => '',
-                'information_id' => 0,
-                'information_name' => '',
-                'color' => $color,
-                'new_tab' => $new_tab,
-                'enabled' => $enabled
-            ];
-
-            if ($type === 'link') {
-                if ($href === '') {
-                    continue;
-                }
-
-                $data['href'] = $href;
-
-                if ($label === '') {
-                    $label = $href;
-                }
-            } elseif ($type === 'route') {
-                if ($route === '') {
-                    continue;
-                }
-
-                $route = preg_replace('~^/+~', '', $route);
-                $route = preg_replace('~/+~', '/', $route);
-
-                if ($route === '') {
-                    continue;
-                }
-
-                $data['route'] = $route;
-
-                if ($label === '') {
-                    $label = $route;
-                }
-            } elseif ($type === 'category') {
-                $category_id = isset($item['category_id']) ? (int) $item['category_id'] : 0;
-
-                if (!$category_id) {
-                    continue;
-                }
-
-                $category_name = isset($item['category_name']) ? trim((string) $item['category_name']) : '';
-
-                if ($category_name === '') {
-                    $category_name = $this->getEntityName('category', $category_id);
-                }
-
-                if ($label === '') {
-                    $label = $category_name !== '' ? $category_name : $fallback_label;
-                }
-
-                $data['category_id'] = $category_id;
-                $data['category_name'] = $category_name !== '' ? $category_name : $fallback_label;
-            } elseif ($type === 'product') {
-                $product_id = isset($item['product_id']) ? (int) $item['product_id'] : 0;
-
-                if (!$product_id) {
-                    continue;
-                }
-
-                $product_name = isset($item['product_name']) ? trim((string) $item['product_name']) : '';
-
-                if ($product_name === '') {
-                    $product_name = $this->getEntityName('product', $product_id);
-                }
-
-                if ($label === '') {
-                    $label = $product_name !== '' ? $product_name : $fallback_label;
-                }
-
-                $data['product_id'] = $product_id;
-                $data['product_name'] = $product_name !== '' ? $product_name : $fallback_label;
-            } elseif ($type === 'information') {
-                $information_id = isset($item['information_id']) ? (int) $item['information_id'] : 0;
-
-                if (!$information_id) {
-                    continue;
-                }
-
-                $information_name = isset($item['information_name']) ? trim((string) $item['information_name']) : '';
-
-                if ($information_name === '') {
-                    $information_name = $this->getEntityName('information', $information_id);
-                }
-
-                if ($label === '') {
-                    $label = $information_name !== '' ? $information_name : $fallback_label;
-                }
-
-                $data['information_id'] = $information_id;
-                $data['information_name'] = $information_name !== '' ? $information_name : $fallback_label;
-            } else {
+            if (!$processed) {
                 continue;
             }
 
-            $unique_key_target = '';
-
-            switch ($type) {
-                case 'link':
-                    $unique_key_target = $data['href'];
-                    break;
-                case 'route':
-                    $unique_key_target = $data['route'];
-                    break;
-                case 'category':
-                    $unique_key_target = (string) $data['category_id'];
-                    break;
-                case 'product':
-                    $unique_key_target = (string) $data['product_id'];
-                    break;
-                case 'information':
-                    $unique_key_target = (string) $data['information_id'];
-                    break;
-            }
-
-            $unique_key = $type . '::' . $unique_key_target;
+            $unique_key = $this->buildUniqueKey($processed);
 
             if (isset($seen_keys[$unique_key])) {
                 continue;
             }
 
             $seen_keys[$unique_key] = true;
-
-            if ($label === '') {
-                $label = $fallback_label;
-            }
-
-            $data['label'] = $label;
-            $data['color'] = $color;
-
-            $result[] = $data;
+            $result[] = $processed;
         }
 
         return $result;
+    }
+
+    private function processMenuItem(array $item, string $fallback_label): ?array {
+        $type = isset($item['type']) ? (string) $item['type'] : 'link';
+
+        if (!isset(self::TYPE_HANDLERS[$type])) {
+            return null;
+        }
+
+        $enabled_raw = $item['enabled'] ?? 1;
+        if (is_array($enabled_raw)) {
+            $enabled_raw = end($enabled_raw);
+        }
+
+        $color = $this->sanitizeColor($item['color'] ?? '');
+
+        $data = [
+            'label' => '',
+            'type' => $type,
+            'href' => '',
+            'route' => '',
+            'category_id' => 0,
+            'category_name' => '',
+            'product_id' => 0,
+            'product_name' => '',
+            'information_id' => 0,
+            'information_name' => '',
+            'color' => $color,
+            'new_tab' => !empty($item['new_tab']) ? 1 : 0,
+            'enabled' => !empty($enabled_raw) ? 1 : 0
+        ];
+
+        $label = isset($item['label']) ? trim((string) $item['label']) : '';
+
+        if ($type === 'link') {
+            $href = isset($item['href']) ? trim((string) $item['href']) : '';
+            if ($href === '') {
+                return null;
+            }
+            $data['href'] = $href;
+            $label = $label ?: $href;
+        } elseif ($type === 'route') {
+            $route = isset($item['route']) ? trim((string) $item['route']) : '';
+            if ($route === '') {
+                return null;
+            }
+            $route = preg_replace(['~^/+~', '~/+~'], ['', '/'], $route);
+            if ($route === '') {
+                return null;
+            }
+            $data['route'] = $route;
+            $label = $label ?: $route;
+        } else {
+            $entity_result = $this->processEntityItem($item, $type, $fallback_label);
+            if (!$entity_result) {
+                return null;
+            }
+            $data = array_merge($data, $entity_result['data']);
+            $label = $label ?: $entity_result['label'];
+        }
+
+        $data['label'] = $label ?: $fallback_label;
+
+        return $data;
+    }
+
+    private function processEntityItem(array $item, string $type, string $fallback_label): ?array {
+        $id_field = "{$type}_id";
+        $name_field = "{$type}_name";
+
+        $id = isset($item[$id_field]) ? (int) $item[$id_field] : 0;
+
+        if (!$id) {
+            return null;
+        }
+
+        $name = isset($item[$name_field]) ? trim((string) $item[$name_field]) : '';
+
+        if ($name === '') {
+            $name = $this->getEntityName($type, $id);
+        }
+
+        $label = $name !== '' ? $name : $fallback_label;
+
+        return [
+            'data' => [
+                $id_field => $id,
+                $name_field => $name !== '' ? $name : $fallback_label
+            ],
+            'label' => $label
+        ];
+    }
+
+    private function sanitizeColor(string $color): string {
+        $color = trim($color);
+
+        if ($color === '' || !preg_match(self::COLOR_PATTERN, $color)) {
+            return self::DEFAULT_COLOR;
+        }
+
+        return $color;
+    }
+
+    private function buildUniqueKey(array $data): string {
+        $type = $data['type'];
+
+        switch ($type) {
+            case 'link':
+                return "$type::{$data['href']}";
+            case 'route':
+                return "$type::{$data['route']}";
+            case 'category':
+                return "$type::{$data['category_id']}";
+            case 'product':
+                return "$type::{$data['product_id']}";
+            case 'information':
+                return "$type::{$data['information_id']}";
+            default:
+                return "$type::unknown";
+        }
     }
 
     private function buildDefaultItems(string $fallback_label): array {
@@ -346,40 +342,21 @@ class ControllerExtensionModuleQmenu extends Controller {
     }
 
     private function getEntityName(string $type, int $id): string {
-        if ($id <= 0) {
+        if ($id <= 0 || !isset($this->entity_cache[$type])) {
             return '';
         }
 
-        switch ($type) {
-            case 'category':
-                if (!array_key_exists($id, $this->category_cache)) {
-                    $this->load->model('catalog/category');
-                    $category = $this->model_catalog_category->getCategory($id);
-                    $this->category_cache[$id] = $category ? $category['name'] : '';
-                }
+        if (!array_key_exists($id, $this->entity_cache[$type])) {
+            $this->load->model("catalog/$type");
+            $model_name = "model_catalog_$type";
+            $method_name = 'get' . ucfirst($type);
 
-                return $this->category_cache[$id];
-
-            case 'product':
-                if (!array_key_exists($id, $this->product_cache)) {
-                    $this->load->model('catalog/product');
-                    $product = $this->model_catalog_product->getProduct($id);
-                    $this->product_cache[$id] = $product ? $product['name'] : '';
-                }
-
-                return $this->product_cache[$id];
-
-            case 'information':
-                if (!array_key_exists($id, $this->information_cache)) {
-                    $this->load->model('catalog/information');
-                    $information = $this->model_catalog_information->getInformation($id);
-                    $this->information_cache[$id] = $information ? $information['title'] : '';
-                }
-
-                return $this->information_cache[$id];
+            $entity = $this->$model_name->$method_name($id);
+            $name_field = $type === 'information' ? 'title' : 'name';
+            $this->entity_cache[$type][$id] = $entity ? $entity[$name_field] : '';
         }
 
-        return '';
+        return $this->entity_cache[$type][$id];
     }
 
     private function getAvailableRoutes(): array {
@@ -435,9 +412,7 @@ class ControllerExtensionModuleQmenu extends Controller {
 
             if ($filter !== '') {
                 $filter_lower = strtolower($filter);
-                $routes = array_filter($routes, function ($route) use ($filter_lower) {
-                    return stripos($route, $filter_lower) !== false;
-                });
+                $routes = array_filter($routes, fn($route) => stripos($route, $filter_lower) !== false);
             }
 
             $routes = array_slice(array_values($routes), 0, 20);

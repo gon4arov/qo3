@@ -16,8 +16,9 @@
   </div>
   <div class="container-fluid">
     {% if error_warning %}
-      <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <i class="fa fa-exclamation-circle"></i> {{ error_warning }}
       </div>
     {% endif %}
     <div class="panel panel-default">
@@ -25,7 +26,7 @@
         <h3 class="panel-title"><i class="fa fa-cog"></i> {{ text_edit }}</h3>
       </div>
       <div class="panel-body">
-        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-qmenu" class="form-horizontal">
+        <form action="{{ action }}" method="post" id="form-qmenu" class="form-horizontal">
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
             <div class="col-sm-10">
@@ -130,284 +131,27 @@
     </div>
   </div>
 </div>
-<script type="text/javascript"><!--
-var qmenuItemRow = {{ item_row }};
-var qmenuRoutes = {{ qmenu_routes|json_encode|raw }};
-
-$('#qmenu-add-item').on('click', function() {
-  var rowId = 'qmenu-item-row' + qmenuItemRow;
-  var html  = '<tr id="' + rowId + '" class="qmenu-sortable-row">';
-      html += '  <td class="text-center qmenu-drag-handle" style="cursor: move; vertical-align: middle;"><i class="fa fa-bars text-muted"></i></td>';
-      html += '  <td class="text-left"><input type="text" name="module_qmenu_items[' + qmenuItemRow + '][label]" value="" placeholder="{{ column_label|escape('js') }}" class="form-control qmenu-label-input" /></td>';
-      html += '  <td class="text-center"><div class="input-group qmenu-color-group" data-row="' + qmenuItemRow + '"><span class="input-group-addon" style="padding:0;border:none;background:transparent;"><input type="color" class="qmenu-color-picker" value="#000000" style="width:40px;height:34px;border:none;padding:0;" /></span><input type="hidden" name="module_qmenu_items[' + qmenuItemRow + '][color]" value="#000000" class="qmenu-color-value" /><span class="input-group-btn"><button type="button" class="btn btn-default qmenu-color-clear" title="{{ button_clear_color|escape('js') }}"><span aria-hidden="true">&times;</span></button></span></div></td>';
-      html += '  <td class="text-left"><select name="module_qmenu_items[' + qmenuItemRow + '][type]" class="form-control qmenu-type">';
-      html += '    <option value="link">{{ text_type_link|escape('js') }}</option>';
-      html += '    <option value="route">{{ text_type_route|escape('js') }}</option>';
-      html += '    <option value="category">{{ text_type_category|escape('js') }}</option>';
-      html += '    <option value="product">{{ text_type_product|escape('js') }}</option>';
-      html += '    <option value="information">{{ text_type_information|escape('js') }}</option>';
-      html += '  </select></td>';
-      html += '  <td class="text-left">';
-      html += '    <div class="qmenu-destination qmenu-destination-link" data-type="link">';
-      html += '      <input type="text" name="module_qmenu_items[' + qmenuItemRow + '][href]" value="" placeholder="{{ help_link|escape('js') }}" class="form-control qmenu-field-link" />';
-      html += '    </div>';
-      html += '    <div class="qmenu-destination qmenu-destination-route" data-type="route" style="display:none">';
-      html += '      <input type="text" name="module_qmenu_items[' + qmenuItemRow + '][route]" value="" placeholder="{{ help_route|escape('js') }}" class="form-control qmenu-field-route" data-autocomplete="route" />';
-      html += '    </div>';
-      html += '    <div class="qmenu-destination qmenu-destination-category" data-type="category" style="display:none">';
-      html += '      <input type="hidden" name="module_qmenu_items[' + qmenuItemRow + '][category_id]" value="0" class="qmenu-entity-id" data-entity="category" />';
-      html += '      <input type="text" name="module_qmenu_items[' + qmenuItemRow + '][category_name]" value="" placeholder="{{ help_category|escape('js') }}" class="form-control qmenu-entity-input" data-autocomplete="category" />';
-      html += '    </div>';
-      html += '    <div class="qmenu-destination qmenu-destination-product" data-type="product" style="display:none">';
-      html += '      <input type="hidden" name="module_qmenu_items[' + qmenuItemRow + '][product_id]" value="0" class="qmenu-entity-id" data-entity="product" />';
-      html += '      <input type="text" name="module_qmenu_items[' + qmenuItemRow + '][product_name]" value="" placeholder="{{ help_product|escape('js') }}" class="form-control qmenu-entity-input" data-autocomplete="product" />';
-      html += '    </div>';
-      html += '    <div class="qmenu-destination qmenu-destination-information" data-type="information" style="display:none">';
-      html += '      <input type="hidden" name="module_qmenu_items[' + qmenuItemRow + '][information_id]" value="0" class="qmenu-entity-id" data-entity="information" />';
-      html += '      <input type="text" name="module_qmenu_items[' + qmenuItemRow + '][information_name]" value="" placeholder="{{ help_information|escape('js') }}" class="form-control qmenu-entity-input" data-autocomplete="information" />';
-      html += '    </div>';
-      html += '  </td>';
-      html += '  <td class="text-center"><input type="hidden" name="module_qmenu_items[' + qmenuItemRow + '][enabled]" value="0" /><input type="checkbox" name="module_qmenu_items[' + qmenuItemRow + '][enabled]" value="1" checked="checked" /></td>';
-      html += '  <td class="text-center"><input type="checkbox" name="module_qmenu_items[' + qmenuItemRow + '][new_tab]" value="1" /></td>';
-      html += '  <td class="text-right"><button type="button" data-row="' + rowId + '" class="btn btn-danger qmenu-remove"><i class="fa fa-minus-circle"></i></button></td>';
-      html += '</tr>';
-
-  $('#qmenu-items tbody').append(html);
-
-  qmenuItemRow++;
-  attachAutocomplete($('#' + rowId));
-  attachColorControls($('#' + rowId));
-  
-  // Re-initialize sortable for the new row
-  $('#qmenu-items tbody').sortable('refresh');
-});
-
-$('#qmenu-items').on('click', '.qmenu-remove', function() {
-  var rowId = $(this).data('row');
-  $('#' + rowId).remove();
-  updateRowIndexes();
-});
-
-$('#qmenu-items').on('change', '.qmenu-type', function() {
-  var row = $(this).closest('tr');
-  var type = $(this).val();
-
-  row.find('.qmenu-destination').hide();
-  row.find('.qmenu-destination-' + type).show();
-
-  if (type === 'link') {
-    row.find('.qmenu-field-route').val('');
-    row.find('.qmenu-entity-id').val('0');
-    row.find('.qmenu-entity-input').val('');
-  } else if (type === 'route') {
-    row.find('.qmenu-field-link').val('');
-    row.find('.qmenu-entity-id').val('0');
-    row.find('.qmenu-entity-input').val('');
-  } else if (type === 'category' || type === 'product' || type === 'information') {
-    row.find('.qmenu-field-link').val('');
-    row.find('.qmenu-field-route').val('');
-  }
-
-  attachAutocomplete(row);
-});
-
-$('#qmenu-items .qmenu-type').trigger('change');
-
-attachAutocomplete($('#qmenu-items'));
-attachColorControls($('#qmenu-items'));
-
-// Initialize sortable functionality
-$('#qmenu-items tbody').sortable({
-  handle: '.qmenu-drag-handle',
-  placeholder: 'qmenu-sortable-placeholder',
-  helper: 'clone',
-  opacity: 0.8,
-  update: function(event, ui) {
-    updateRowIndexes();
-  }
-});
-
-function updateRowIndexes() {
-  $('#qmenu-items tbody tr.qmenu-sortable-row').each(function(index) {
-    var $row = $(this);
-    var oldId = $row.attr('id');
-    var newId = 'qmenu-item-row' + index;
-    
-    // Update row ID
-    $row.attr('id', newId);
-    
-    // Update all input names and IDs
-    $row.find('input, select').each(function() {
-      var $input = $(this);
-      var name = $input.attr('name');
-      if (name) {
-        name = name.replace(/\[\d+\]/, '[' + index + ']');
-        $input.attr('name', name);
-      }
-    });
-    
-    // Update remove button data-row attribute
-    $row.find('.qmenu-remove').attr('data-row', newId);
-    
-    // Update color group data-row attribute
-    $row.find('.qmenu-color-group').attr('data-row', index);
+<script>
+$(document).ready(function() {
+  QMenu.init({
+    itemRow: {{ item_row }},
+    routes: {{ qmenu_routes|json_encode|raw }},
+    userToken: '{{ user_token }}',
+    strings: {
+      label: '{{ column_label|escape('js') }}',
+      clearColor: '{{ button_clear_color|escape('js') }}',
+      typeLink: '{{ text_type_link|escape('js') }}',
+      typeRoute: '{{ text_type_route|escape('js') }}',
+      typeCategory: '{{ text_type_category|escape('js') }}',
+      typeProduct: '{{ text_type_product|escape('js') }}',
+      typeInformation: '{{ text_type_information|escape('js') }}',
+      helpLink: '{{ help_link|escape('js') }}',
+      helpRoute: '{{ help_route|escape('js') }}',
+      helpCategory: '{{ help_category|escape('js') }}',
+      helpProduct: '{{ help_product|escape('js') }}',
+      helpInformation: '{{ help_information|escape('js') }}'
+    }
   });
-}
-
-function attachAutocomplete(context) {
-  context.find('[data-autocomplete]').each(function() {
-    var $input = $(this);
-
-    if ($input.data('qmenu-autocomplete')) {
-      return;
-    }
-
-    var type = $input.data('autocomplete');
-
-    if (!$input.data('qmenu-entity-listener') && type !== 'route') {
-      $input.on('input', function() {
-        $(this).closest('.qmenu-destination').find('.qmenu-entity-id').val('0');
-      });
-      $input.data('qmenu-entity-listener', true);
-    }
-
-    $input.data('qmenu-autocomplete', true);
-
-    if (type === 'route') {
-      $input.autocomplete({
-        'minLength': 0,
-        'autoFocus': true,
-        'source': function(request, response) {
-          var term = request;
-
-          if (typeof request === 'object' && request.term !== undefined) {
-            term = request.term;
-          }
-
-          var results = [];
-
-          if (term) {
-            var lower = term.toLowerCase();
-
-            for (var i = 0; i < qmenuRoutes.length; i++) {
-              if (qmenuRoutes[i].toLowerCase().indexOf(lower) !== -1) {
-                results.push(qmenuRoutes[i]);
-
-                if (results.length >= 20) {
-                  break;
-                }
-              }
-            }
-          } else {
-            results = qmenuRoutes.slice(0, 20);
-          }
-
-          response($.map(results, function(route) {
-            return {
-              label: route,
-              value: route
-            };
-          }));
-        },
-        'focus': function(event, ui) {
-          event.preventDefault();
-          $input.val(ui.item['label']);
-        },
-        'select': function(event, ui) {
-          event.preventDefault();
-          $input.val(ui.item['value']);
-
-          var $labelInput = $input.closest('tr').find('.qmenu-label-input');
-
-          if ($labelInput.val() === '') {
-            $labelInput.val(ui.item['value']);
-          }
-        }
-      });
-    } else {
-      $input.autocomplete({
-        'minLength': 0,
-        'autoFocus': true,
-        'source': function(request, response) {
-          var term = request;
-
-          if (typeof request === 'object' && request.term !== undefined) {
-            term = request.term;
-          }
-
-          $.ajax({
-            url: 'index.php?route=extension/module/qmenu/autocomplete&user_token={{ user_token }}&type=' + type + '&filter_name=' + encodeURIComponent(term || ''),
-            dataType: 'json',
-            success: function(json) {
-              response($.map(json, function(item) {
-                return {
-                  label: item['label'],
-                  value: item['value']
-                };
-              }));
-            }
-          });
-        },
-        'focus': function(event, ui) {
-          event.preventDefault();
-          $input.val(ui.item['label']);
-        },
-        'select': function(event, ui) {
-          event.preventDefault();
-          $input.val(ui.item['label']);
-          var $destination = $input.closest('.qmenu-destination');
-          $destination.find('.qmenu-entity-id').val(ui.item['value']);
-
-          var $labelInput = $input.closest('tr').find('.qmenu-label-input');
-
-          if ($labelInput.val() === '') {
-            $labelInput.val(ui.item['label']);
-          }
-        }
-      });
-    }
-
-    $input.on('focus', function() {
-      var current = $(this).val();
-      $(this).autocomplete('search', current || '');
-    });
-  });
-
-  attachColorControls(context);
-}
-
-function attachColorControls(context) {
-  context.find('.qmenu-color-group').each(function() {
-    var $group = $(this);
-
-    if ($group.data('qmenu-color-initialized')) {
-      return;
-    }
-
-    $group.data('qmenu-color-initialized', true);
-
-    var $picker = $group.find('.qmenu-color-picker');
-    var $value = $group.find('.qmenu-color-value');
-    var $clear = $group.find('.qmenu-color-clear');
-
-    if ($value.val()) {
-      $picker.val($value.val());
-    } else {
-      $picker.val('#000000');
-    }
-
-    $picker.on('change input', function() {
-      var val = $(this).val();
-      if (val) {
-        $value.val(val);
-      }
-    });
-
-    $clear.on('click', function() {
-      $value.val('');
-      $picker.val('#000000');
-    });
-  });
-}
---></script>
+});
+</script>
 {{ footer }}
