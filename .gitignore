@@ -1,1 +1,10 @@
 context
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Build artifacts
+*.ocmod.zip
+*.zip
