@@ -47,14 +47,14 @@
               <table id="qmenu-items" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <td class="text-center" style="width: 30px;"><i class="fa fa-arrows" title="{{ text_drag_to_reorder }}"></i></td>
+                    <td class="text-left" style="width: 30px;"><i class="fa fa-arrows" title="{{ text_drag_to_reorder }}"></i></td>
                     <td class="text-left">{{ column_label }}</td>
-                    <td class="text-center">{{ column_color }}</td>
+                    <td class="text-left">{{ column_color }}</td>
                     <td class="text-left">{{ column_type }}</td>
                     <td class="text-left">{{ column_destination }}</td>
-                    <td class="text-center">{{ column_enabled }}</td>
-                    <td class="text-center">{{ column_new_tab }}</td>
-                    <td class="text-right">{{ column_action }}</td>
+                    <td class="text-left">{{ column_enabled }}</td>
+                    <td class="text-left">{{ column_new_tab }}</td>
+                    <td class="text-left">{{ column_action }}</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -119,17 +119,11 @@
                   {% set item_row = item_row + 1 %}
                   {% endfor %}
                 </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="8"></td>
-                    <td class="text-right">
-                      <button type="button" id="qmenu-add-item" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{ button_add_item }}</button>
-                    </td>
-                  </tr>
-                </tfoot>
               </table>
             </div>
-            <p class="help-block">{{ help_new_tab }}</p>
+            <div style="margin-top: 10px; text-align: right;">
+              <button type="button" id="qmenu-add-item" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{ button_add_item }}</button>
+            </div>
           </fieldset>
         </form>
       </div>
