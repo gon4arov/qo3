@@ -23,7 +23,12 @@ class ControllerExtensionModuleQmenu extends Controller {
         $this->load->language('extension/module/qmenu');
 
         $this->document->setTitle($this->language->get('heading_title'));
-        $this->document->addScript('view/javascript/jquery/ui/jquery-ui.min.js');
+
+        // jQuery UI from CDN
+        $this->document->addScript('https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js');
+        $this->document->addStyle('https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css');
+
+        // Module assets
         $this->document->addScript('view/javascript/qmenu.js');
         $this->document->addStyle('view/stylesheet/qmenu.css');
 
