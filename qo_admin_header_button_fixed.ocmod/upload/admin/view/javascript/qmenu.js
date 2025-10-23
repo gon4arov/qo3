@@ -269,7 +269,7 @@
                 select: function(event, ui) {
                     event.preventDefault();
                     $input.val(ui.item.value);
-                    self.updateLabelIfEmpty($input, ui.item.value);
+                    self.updateLabel($input, ui.item.value);
                 }
             });
         },
@@ -295,16 +295,14 @@
                     event.preventDefault();
                     $input.val(ui.item.label);
                     $input.closest('.qmenu-destination').find('.qmenu-entity-id').val(ui.item.value);
-                    self.updateLabelIfEmpty($input, ui.item.label);
+                    self.updateLabel($input, ui.item.label);
                 }
             });
         },
 
-        updateLabelIfEmpty: function($input, value) {
+        updateLabel: function($input, value) {
             var $labelInput = $input.closest('tr').find('.qmenu-label-input');
-            if ($labelInput.val() === '') {
-                $labelInput.val(value);
-            }
+            $labelInput.val(value);
         },
 
         attachColorControls: function($context) {
