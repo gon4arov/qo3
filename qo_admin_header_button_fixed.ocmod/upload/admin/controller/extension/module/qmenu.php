@@ -10,6 +10,8 @@ class ControllerExtensionModuleQmenu extends Controller {
 
     private const COLOR_PATTERN = '~^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$~';
     private const DEFAULT_COLOR = '#000000';
+    private const MAX_ITEMS = 50;
+    private const ALLOWED_URL_SCHEMES = ['http', 'https', 'ftp'];
 
     private const TYPE_HANDLERS = [
         'link' => ['field' => 'href', 'required' => true],
@@ -140,6 +142,13 @@ class ControllerExtensionModuleQmenu extends Controller {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
+        // Check maximum items limit
+        if (isset($this->request->post['module_qmenu_items']) && is_array($this->request->post['module_qmenu_items'])) {
+            if (count($this->request->post['module_qmenu_items']) > self::MAX_ITEMS) {
+                $this->error['warning'] = sprintf('Maximum %d menu items allowed. Please remove some items.', self::MAX_ITEMS);
+            }
+        }
+
         return !$this->error;
     }
 
@@ -212,6 +221,12 @@ class ControllerExtensionModuleQmenu extends Controller {
             if ($href === '') {
                 return null;
             }
+
+            // XSS Protection: Validate URL scheme
+            if (!$this->isValidUrl($href)) {
+                return null;
+            }
+
             $data['href'] = $href;
             $label = $label ?: $href;
         } elseif ($type === 'route') {
@@ -373,27 +388,35 @@ class ControllerExtensionModuleQmenu extends Controller {
         $length = strlen($base) + 1;
         $routes = [];
 
-        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($base));
+        try {
+            $iterator = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator($base, \RecursiveDirectoryIterator::SKIP_DOTS)
+            );
 
-        foreach ($iterator as $file) {
-            if (!$file->isFile() || $file->getExtension() !== 'php') {
-                continue;
+            foreach ($iterator as $file) {
+                if (!$file->isFile() || $file->getExtension() !== 'php') {
+                    continue;
+                }
+
+                $path = $file->getPathname();
+
+                $route = substr($path, $length, -4);
+                $route = str_replace('\\', '/', $route);
+                $route = preg_replace('~/+~', '/', $route);
+
+                if ($route === false || $route === '') {
+                    continue;
+                }
+
+                $routes[$route] = $route;
             }
 
-            $path = $file->getPathname();
-
-            $route = substr($path, $length, -4);
-            $route = str_replace('\\', '/', $route);
-            $route = preg_replace('~/+~', '/', $route);
-
-            if ($route === false || $route === '') {
-                continue;
-            }
-
-            $routes[$route] = $route;
+            ksort($routes);
+        } catch (\Exception $e) {
+            // Log error but don't break functionality
+            error_log('qmenu: Failed to scan routes - ' . $e->getMessage());
+            $routes = [];
         }
-
-        ksort($routes);
 
         $this->route_cache = array_values($routes);
 
@@ -501,5 +524,39 @@ class ControllerExtensionModuleQmenu extends Controller {
         }
 
         return $value;
+    }
+
+    /**
+     * Validates URL to prevent XSS attacks via javascript:, data:, vbscript: schemes
+     *
+     * @param string $url URL to validate
+     * @return bool True if URL is safe, false otherwise
+     */
+    private function isValidUrl(string $url): bool {
+        if ($url === '' || $url === '#') {
+            return true; // Allow empty anchors
+        }
+
+        // Allow relative URLs (starting with / or ./ or ../)
+        if (preg_match('~^(\.{0,2}/|#)~', $url)) {
+            return true;
+        }
+
+        // Parse URL and validate scheme
+        $parsed = parse_url($url);
+
+        // If no scheme (relative URL like "index.php?route=...")
+        if (!isset($parsed['scheme'])) {
+            return true;
+        }
+
+        // Check if scheme is in whitelist
+        $scheme = strtolower($parsed['scheme']);
+        if (!in_array($scheme, self::ALLOWED_URL_SCHEMES, true)) {
+            error_log('qmenu: Blocked dangerous URL scheme: ' . $scheme);
+            return false;
+        }
+
+        return true;
     }
 }

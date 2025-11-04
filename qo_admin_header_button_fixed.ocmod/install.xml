@@ -17,7 +17,7 @@
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="qmenuDropdown">
           {% if has_items %}
             {% for item in qmenu_items %}
-          <li><a href="{{ item.href|default('#') }}"{% if item.target %} target="_blank"{% endif %}{% if item.color %} style="color: {{ item.color }};"{% endif %}>{{ item.label|default(item.href|default(item.route|default(qmenu_default_label|default('qmenu')))) }}</a></li>
+          <li><a href="{{ item.href|default('#') }}"{% if item.target %} target="_blank"{% endif %}{% if item.color %} style="color: {{ item.color|escape('html_attr') }};"{% endif %}>{{ item.label|default(item.href|default(item.route|default(qmenu_default_label|default('qmenu')))) }}</a></li>
             {% endfor %}
           {% else %}
           <li class="disabled"><a href="#" tabindex="-1">{{ qmenu_empty_text|default(qmenu_default_label|default('qmenu')) }}</a></li>

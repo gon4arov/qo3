@@ -74,8 +74,8 @@
                     </td>
                     <td class="text-center">
                       <div class="input-group qmenu-color-group" data-row="{{ item_row }}">
-                        <span class="input-group-addon" style="padding:0;border:none;background:transparent;"><input type="color" class="qmenu-color-picker" value="{{ item.color is defined and item.color ? item.color : '#000000' }}" style="width:40px;height:34px;border:none;padding:0;" /></span>
-                        <input type="hidden" name="module_qmenu_items[{{ item_row }}][color]" value="{{ item.color|default('#000000') }}" class="qmenu-color-value" />
+                        <span class="input-group-addon" style="padding:0;border:none;background:transparent;"><input type="color" class="qmenu-color-picker" value="{{ item.color is defined and item.color ? item.color|escape('html_attr') : '#000000' }}" style="width:40px;height:34px;border:none;padding:0;" /></span>
+                        <input type="hidden" name="module_qmenu_items[{{ item_row }}][color]" value="{{ item.color|default('#000000')|escape('html_attr') }}" class="qmenu-color-value" />
                         <span class="input-group-btn">
                           <button type="button" class="btn btn-default qmenu-color-clear" title="{{ button_clear_color }}"><span aria-hidden="true">&times;</span></button>
                         </span>

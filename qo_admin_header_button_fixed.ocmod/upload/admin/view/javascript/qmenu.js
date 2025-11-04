@@ -306,6 +306,7 @@
         },
 
         attachColorControls: function($context) {
+            var self = this;
             $context.find('.qmenu-color-group').each(function() {
                 var $group = $(this);
 
@@ -323,8 +324,13 @@
 
                 $picker.on('change input', function() {
                     var val = $(this).val();
-                    if (val) {
+                    // Validate hex color format to prevent CSS injection
+                    if (val && self.isValidColor(val)) {
                         $value.val(val);
+                    } else {
+                        // Reset to default if invalid
+                        $picker.val('#000000');
+                        $value.val('#000000');
                     }
                 });
 
@@ -333,6 +339,11 @@
                     $picker.val('#000000');
                 });
             });
+        },
+
+        isValidColor: function(color) {
+            // Validate hex color: #RGB or #RRGGBB
+            return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(color);
         }
     };
 
